@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TextArea No Vowels</title>
+    <script>
+        window.onload = function(){
+        var element = document.getElementById('novowels');
+        element.onkeydown = function(e){
+
+           //console.log(e);
+           var keyCode_values = [65,69,73,79,85];
+
+           if(keyCode_values.indexOf(e.keyCode) !== -1){
+               e.preventDefault();
+           }
+
+
+
+
+           }
+
+
+
+
+        };
+    </script>
+</head>
+<body>
+<textarea name="textbox" id="novowels" cols="30" rows="10">
+
+</textarea>
+</body>
+</html>

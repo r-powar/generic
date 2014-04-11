@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memoization Pattern</title>
+    <script>
+
+        function factorial(n){
+
+            if(n <= 1)
+            {return 1;}
+
+            else{
+                return  n * factorial(n-1);
+            }
+
+        }
+
+
+
+
+        var cache ={};
+
+        function factorial_cache(x){
+            if(x in cache)
+                return cache[x];
+
+            else{
+                if(x <= 1)
+                    return 1;
+
+                else{
+                    cache[x] = x * factorial_cache(x-1);
+                    return cache[x];
+                }
+            }
+        }
+
+
+
+
+    </script>
+    <script>
+
+        function factorial(n){
+
+            if(n <= 1)
+            {return 1;}
+
+            else{
+              return  n * factorial(n-1);
+            }
+
+        }
+
+        var result = factorial(6);
+
+       // console.log(factorial(5));
+
+//        ///function assert(a,b, fn){
+//            if(typeof a === 'object'){
+//                if(fn(a.inp) === a.op ){
+//                    console.log('passed');
+//                } else {
+//                    console.log('failed');
+//                }
+//            } else {
+//                if (fn(a) === fn(b)){
+//                    console.log('passed');
+//                }
+//                else
+//                console.log('failed');
+//            }
+//        }
+
+        function assert(){
+            //user passes two values of the same type
+            //user passes a function and two values
+            //user passes a function and a test object
+
+            console.log(typeof arguments[0]);
+
+            if(typeof arguments[0] === 'function'){
+                var fn = arguments[0];
+                if(arguments.length === 3){
+                    console.log((fn(arguments[1]) === arguments[2] ? 'test passed' : 'test failed'));
+                } else {
+                    console.log((fn(arguments[1].inp) === arguments[1].op ? 'test passed' : 'test failed'));
+                }
+
+            }
+            else{
+               console.log((arguments[0] === arguments[1] ? 'test passed' : 'test failed'));
+            }
+
+        }
+
+        function compute(fn, inp){
+            //create a Date object
+        }
+
+        //assert(factorial);
+
+        var cache ={};
+
+        function factorial_cache(x){
+            if(x in cache)
+            return cache[x];
+
+            else{
+                if(x <= 1)
+                return 1;
+
+                else{
+                    cache[x] = x * factorial_cache(x-1);
+                    return cache[x];
+                }
+            }
+        }
+
+        var result2 = factorial_cache(6);
+        console.log(factorial_cache(6));
+        console.log(cache);
+
+        // go to jsperf to check the code for memoized and unmemoized
+
+    </script>
+</head>
+
+<body>
+
+
+</body>
+</html>

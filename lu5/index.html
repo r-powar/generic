@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX</title>
+    <script src="data_gov_weather.js "></script>
+    <script>
+        window.onload = function(){
+          //console.log(county_info[0]);
+          var inp = document.getElementById('inp1');
+
+           inp.onkeydown = function(evt){
+                // evt : event handler, parameter that has been defined and object is assigned to evt in this case
+                if(evt.keyCode === 13){
+                    //'13' is keycode number when you hit enter
+                    var city = inp.value;
+                    console.log('the user has picked ' + city);
+                    //clear data
+                    clear_data();
+                    getInfo(city);
+                }
+            }
+
+
+        };
+
+        function getInfo(city){
+//            var city = document.getElementById('inp1').value;
+            console.log('starting');
+            var xhr = new XMLHttpRequest();
+            var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + ',us';
+            xhr.open('GET', url);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    var obj = JSON.parse(xhr.responseText);//converts it to JavaScript object
+                    //document.getElementById('response').innerHTML = xhr.responseText;
+                    // print response data
+                    display_weather_info(obj);
+                    console.log(obj);
+                }
+            };
+            xhr.send();
+
+        }
+
+        function clear_data(){
+            var res_data = document.getElementById('response');
+            res_data.children[1].innerHTML = ' ';
+            res_data.children[2].innerHTML = ' ';
+        }
+
+        function display_weather_info(obj){
+            var res_data = document.getElementById('response');
+            res_data.children[1].innerHTML = obj.weather[0].description;
+            var imgurl = 'http://openweathermap.org/img/w/' + obj.weather[0].icon + '.png';
+            res_data.children[2].src = imgurl;
+
+        }
+
+
+    </script>
+</head>
+<body>
+<div class = "container">
+    <h1>AJAX response</h1>
+
+    <input type = "text" id = 'inp1'/>
+    <div id="response">
+        <h1>Weahter Forecast</h1>
+        <span> </span>
+        <img src="" alt=""/>
+    </div>
+
+</div>
+
+</body>
+</html>

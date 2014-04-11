@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+        window.onload = function(){
+
+           document.forms[0].onsubmit = function(evnt){
+                evnt.preventDefault();
+                console.log('test');
+                var request = new XMLHttpRequest();
+                request.open('post', '/contact/submitted');
+                request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                request.onreadystatechange = function(){
+                   if(request.status === 200 && request.readyState === 4 )
+                   {
+                      var response = request.responseText;
+                       console.log(response);
+
+                       var form_page = document.getElementById('form');
+                       var new_div = document.getElementById('response');
+                       new_div.innerHTML = response;
+                       document.body.appendChild(new_div);
+
+                       form_page.style.display = "none";
+
+                   }
+                };
+               var obj = JSON.stringify(getData());
+               request.send(obj);
+            }
+
+            function getData(){
+                var jsonData = {};
+                var validElements = ['input','textarea'];
+                var children = document.forms[0].children;
+                console.log(children);
+                for(var i = 0; i < children.length; i++ ){
+                    if(validElements.indexOf(children[i].localName != -1)){
+                        if(children[i].getAttribute('type') != 'submit'){
+                        jsonData[children[i].name] = children[i].value;
+                        }
+
+                    }
+
+                    //console.log(jsonData);
+
+                }
+
+                return jsonData;
+            }
+
+        };
+
+
+    </script>
+</head>
+<body>
+<h1>Contact Us</h1>
+
+ <div id="response">
+
+ </div>
+<form action="/contact/submitted" method="POST" id="form">
+    <input type="text" name="email" id="email" placeholder="Email"/> <br/>
+    <input type="text" name="first_name" id="fn" placeholder="First Name"/> <br/>
+    <input type="text" name="last_name" id="ln" placeholder="Last Name"/> <br/>
+    <input type="text" name="phone" id="phone" placeholder="Phone"/> <br/>
+    <input type="text" name="addr" id="addr" placeholder="Address"/> <br/>
+    <input type="text" name="zip" id="zip" placeholder="Zip"/> <br/>
+    <br/>
+
+    What are you interested in? <br/>
+    <textarea name="txt" id="txt" cols="30" rows="10"></textarea> <br/><br/>
+
+    <input type="radio" value="UI" name="dev"/>UI Developer
+    <input type="radio" value="UX" name="dev" />UX Developer <br/><br/>
+
+    <input type="checkbox" value="box" name="box" />Sign me up for next time <br/><br/>
+    <input type="submit" value="Submit" name="submit"  placeholder="Submit"/>
+</form>
+</body>
+</html>

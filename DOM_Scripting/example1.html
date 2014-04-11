@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example1</title>
+</head>
+<style>
+    div{
+        width: 50em;
+        height:75em;
+        background-color: #61cc73;
+    }
+</style>
+<script>
+
+    //
+    window.onload = function(){
+
+        var form = document.forms.login;
+        document.forms.login.onsubmit = function(evnt){
+
+           var isValidNumber = /^(0|[1-9][0-9]*)$/.test(form.q.value);
+
+
+            isValidNumber ? '' :evnt.preventDefault();
+
+        }
+
+
+
+    };
+</script>
+<body>
+
+    <form action="http://www.google.com" name="login" method="GET">
+        <input type="text" name="q"/>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>

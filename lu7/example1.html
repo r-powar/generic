@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Call and Apply for Functions</title>
+    <script>
+        var obj = {
+            id: 32,
+            getId: function (multiplier){
+                return this.id * multiplier;
+            }
+        };
+
+        console.log(obj.getId(23));
+
+        var obj2= {
+            id:100
+        }
+
+        // the call method takes in parameters(context, param1, param2....)
+        var value = obj.getId.call(obj2,23); //'call' is used to call a function on another object
+        console.log(value);
+
+        //apply method takes the second argument as an array
+        var arr = []
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

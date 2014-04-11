@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script>
+        window.onload = function (){
+        function swap(x,y){
+
+            var temp = x.x;
+            x.x = y.x;
+            y.x = temp;
+
+        }
+
+        var x = {} , y ={};
+        x.x = 32;
+        y.x = 64;
+        swap(x,y);
+
+        console.log(x);
+
+        console.log(typeof swap);
+
+
+         function Car(){
+                this.model = 'model',
+                this.segment = 1
+         }
+
+            Car.name = 'Camry';
+
+            var toyota = new Car();
+            console.log(Object.getPrototypeOf(toyota));
+            console.log(toyota.model);
+
+            console.log(Object.getPrototypeOf(Car));
+            Car.prototype.letters = 'xyz';
+            console.log(Car.prototype);
+
+
+            var obj = {
+                id : 32,
+                name: this.id + 'name'
+            };
+
+            console.log(objheme);
+
+
+
+
+        };
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

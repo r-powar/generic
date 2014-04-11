@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geometry and Scrolling</title>
+    <script>
+        window.onload = function() {
+        for(var i =0 ; i <100 ; i++){
+
+            var div_1 = document.createElement('div');
+            div_1.innerHTML = "This a loop of div";
+            document.body.appendChild(div_1);
+
+        }
+
+            var btn = document.getElementById('btn1');
+            btn.onclick = function (){
+
+                console.log(window.innerHeight);
+                console.log(window.innerWidth);
+                window.scrollTo(0,100);
+                console.log(window.scrollX);
+                console.log(window.scrollY);
+
+            };
+
+
+//            window.onscroll = function(evnt){
+//
+//                console.log(evnt);
+//            };
+        };
+    </script>
+</head>
+<body>
+    <button id="btn1">
+        Scroll to a position
+    </button>
+    <div style="height: 100em;" onclick=" ">
+
+    </div>
+</body>
+</html>

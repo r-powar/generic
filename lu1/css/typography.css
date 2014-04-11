@@ -1,0 +1,221 @@
+/* Imports */
+/*--  Reset CSS Import to stop default browser styles to be applied  --*/
+@import url(http://reset5.googlecode.com/hg/reset.min.css);
+    /*--  Google Font import for font styling  --*/
+@import url(http://fonts.googleapis.com/css?family=Syncopate:400,700|Open+Sans:400,300,600,700);
+
+
+/* Global */
+body{
+    background: #d7d7d5 url('../img/gray_noise.png') repeat;
+    /* Use noisetexturegenerator.com to generate a texture based on the color */
+    font: 300 100% Open Sans;
+}
+h1 {
+    font-family: Syncopate;
+    font-size: 1.5em;
+    color: #555;
+    text-shadow: 1px 1px 1px #e8e2dd;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+/*-- Header CSS Begins --*/
+#header_menu {
+    background: #f4f4f4;
+    color: #b2a59a;
+}
+
+span.phone{
+    color: #555;
+}
+
+li.nav_menu_item{
+    font-size: 0.95em;
+}
+
+li.link:hover{
+    color: #444;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+li.contact_me{
+    color: #444;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+li.contact_me:hover{
+    color: #222;
+}
+/*-- Header CSS Ends --*/
+
+
+/*-- Body CSS Begins --*/
+
+
+
+div.name{
+    color: #3b3b3b;
+    font: 700 2em Syncopate;
+    text-shadow: 1px 1px 1px #ffffff;
+}
+
+div.section_link{
+    color: #666;
+    font: 300 1.2em 'Open Sans';
+}
+
+div.section_link > a:hover{
+    color: #222;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+div.designation{
+    font: 700 1.2em 'Open Sans';
+    background-color: #308670;
+    color: white;
+}
+
+div.about_me{
+    line-height: 1.65em;
+    letter-spacing: 0.02em;
+    background-color: rgba(207, 85, 58, 0.90);
+    color: white;
+}
+
+strong{
+    font-weight: 600;
+}
+
+#skills{
+    background-color: rgba(150, 150, 150, 0.20);
+}
+
+ul.skillset{
+    font-size: 0.85em;
+}
+
+ul.skillset > li {
+    font-weight: 100;
+    color: #262626;
+    background-color: #afafaf;
+}
+
+ul.skillset > li:hover {
+    background-color: #333;
+    color: #ffffff;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+#education{
+    background-color: rgba(150, 150, 150, 0.20);
+}
+
+div.qualification{
+    font: 300 1.75em 'Open Sans';
+}
+div.university{
+    font: 300 1em 'Open Sans';
+}
+
+span.sub{
+    font-size: 0.55em;
+    color: #9a9a9a;
+}
+
+
+div.courses_1 > ul{
+    line-height: 1.75em;
+    text-transform: capitalize;
+}
+
+div.courses_1 > ul > li{
+    color: #666;
+}
+div.courses_1 > ul > li:nth-child(2n+1){
+    color: #555 ;
+}
+
+div.courses_1 > ul > li:hover{
+    color: #222;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
+#experience {
+    background-color: rgba(150, 150, 150, 0.20);
+}
+
+
+span.exp_title{
+    font: 300 1.5em 'Open Sans';
+    color: #222;
+}
+
+span.exp_location{
+    font: 300 1.0em 'Open Sans';
+    color: #222;
+}
+
+span.exp_link{
+    font: 300 0.85em 'Open Sans';
+    color: #555;
+}
+
+ul.exp_list{
+    background-color: rgba(21, 131, 149, 1);
+    color: white;
+}
+
+/*-- Body CSS Ends --*/
+
+
+/*-- Footer CSS Begins --*/
+footer {
+    background-color: rgba(21,131,149,0.20);
+}
+div.copyright{
+    text-shadow: 1px 1px 1px white;
+}
+/*-- Footer CSS Ends --*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

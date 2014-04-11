@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Border Image</title>
+    <style>
+        .span-1, .span-7, .span-8{
+            float: left;
+            margin-right: 10px;
+
+        }
+        .span-1{
+            width:30px;
+        }
+
+        .span-7{
+            width: 270px;
+        }
+
+        .span-8{
+            width: 310px;
+        }
+
+        .last{
+            margin-right: 0;
+        }
+
+        div{
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        img{
+            width: 100%;
+
+        }
+
+        div[class*='bimage']{
+            background-color: red;
+            border: 20px solid;
+            font-weight: bold;
+        }
+
+        div[class*='bimage'] p{
+            margin-bottom: 0;
+            padding: 30px;
+
+        }
+
+        p{
+            margin: 0 0 1.5em;
+        }
+
+        div.bimage-1{
+            -webkit-border-image: url('img/border.jpg') 32 39 36 41 stretch;
+            border-image: url('img/border.jpg') 32 39 36 41 fill stretch;
+
+        }
+
+        div.bimage-2{
+            border-image-source: url('img/border.jpg') ;
+            border-image-slice: 32 39 36 41;
+            border-image-repeat: stretch ;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="span-1">&thinsp;</div>
+        <div class="span-8">
+            <img src="img/border.jpg" alt=""/>
+        </div>
+        <div class="span-7 bimage-1">
+            <p>alkdfha sdfasdfhas dfajsfsdfafjfs</p>
+        </div>
+        <div class="span-7 bimage-2">
+            <p>alkdfhasd fasdfhasd fajsfsdfafjfs</p>
+        </div>
+        <div class="span-1 last">&thinsp;</div>
+
+    </div>
+</body>
+</html>

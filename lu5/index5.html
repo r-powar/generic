@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="jquery.js"></script>
+    <script>
+//        function Car(){
+//            //this.name ='sonal';
+//        }
+//
+//        Car.name = 'phani';
+//        Car.prototype.name = 'raj';
+//        var volvo = new Car();
+//        console.log(volvo.name);
+
+
+
+//        console.log(window.id);
+//        var x = function(){this.id =22;}
+//        x();
+//        console.log(x.id);
+//        console.log(window.id);
+
+//
+//        var x ={
+//            valueOf: function(){
+//                return 1;
+//            }
+//        };
+//        console.log(x+2);
+//        console.log(x.toString());
+//        console.log(x.prototype);
+//        console.log(Object.getPrototypeOf(x));
+//        console.log(x.valueOf());
+//
+//        var n = Number(x);
+//        console.log(n);
+//        var str = String(x);
+//        console.log(str);
+
+
+
+//        var x ={
+//           valueOf: function(){
+//               return 59;
+//           },
+//
+//           toString : function(){
+//               return "Object has an id of 32";
+//           }
+//        };
+//        console.log(x + 2 + 3);
+//        var y = String(x);
+//        console.log(y);
+
+
+//       $(function(){
+//
+//           var x = [1,2,55,2,8,9];
+//           console.log(x.sort());
+//
+//           console.log(100 > 10);
+//           console.log(100 > '2'); //JS generally coverts it to the value it needs
+//           console.log('100' > '2'); //JS is using the two strings to comapte it
+//       });
+
+
+        $(function(){
+
+            function test(){
+
+                return Array.prototype.reduce.call(arguments,function (a,b){
+                    return a+b;
+                });
+
+            }
+
+            console.log(test(1,2));
+        });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

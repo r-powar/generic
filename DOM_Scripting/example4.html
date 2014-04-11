@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script>
+        window.onload = function(){
+
+//            var div1 = document.createElement('div');
+//            document.body.appendChild(div1);
+//            div1.innerHTML = 'Div1';
+
+//            var div1 = createElement('div','Div1',document.body);
+//            var span = createElement('span','Span',div1);
+//            var div2 = createElement('div','Div2', div1);
+//            var div3 = createElement('div','Div3',div2);
+
+//            var div2 = document.createElement('div');
+//            div1.appendChild(div2);
+//            div2.innerHTML='Div2';
+//
+//            var span = document.createElement('span');
+//            div1.appendChild(span);
+//            span.innerHTML = 'Span';
+
+
+            //createElement('div','Div1',document.body).createElement('span','Span',div1).createElement('div','Div2', div1).createElement('div','Div3',div2);
+            createChild('div','Div1').createChild('span','Span1');
+
+            //Apply Chaining
+            function createChild(name, html){
+                var elem = document.createElement('name');
+                elem.innerHTML = html;
+                return this;
+            }
+
+            function createElement(name,value,parent){
+
+                var ele = document.createElement(name);
+                ele.innerHTML = value;
+                parent.appendChild(ele);
+
+                return ele;
+            }
+
+        };
+    </script>
+</head>
+<body>
+    <!--<div>-->
+        <!--Div1-->
+        <!--<span>Span1</span>-->
+        <!--<div>-->
+            <!--Div2-->
+            <!--<div>-->
+                <!--Div3-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+</body>
+</html>

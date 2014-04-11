@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Immediate Functions</title>
+    <script>
+        //this is immediate function because you want to declare it and run it right away
+        (function(){
+            console.log('Hello World!!');
+        }());
+
+        //"Raj" is being passed into person parameter
+        (function(person){
+                console.log('Hello World from ' + person);
+        })('Raj');
+
+
+        var getName = (function(person){
+            var _person = person;
+
+            return function(){
+                return _person;
+            }
+        }('Krithika'));
+
+        console.log('Hello World from '+ getName());
+
+
+
+
+        var x = {
+            name: 'Foram',
+            id: 300,
+
+            return_id: function(){
+                return this.id;
+            },
+
+            return_name: function(){
+                return this.name;
+            },
+
+            instantiate: function(){
+                console.log('Hello World from '+ this.return_name() + '; ID: ' + this.return_id());
+            }
+        };
+
+        console.log(x.instantiate());
+
+        //Immediate Object Initialization
+
+        ({
+            name: 'Foram',
+            id: 300,
+
+            return_id: function(){
+                return this.id;
+            },
+
+            return_name: function(){
+
+                return this.name;
+            },
+
+            instantiate: function(salutation){
+                console.log('Hello World from '+ salutation + this.return_name() + '; ID: ' + this.return_id());
+            }
+
+
+        }).instantiate('Dr.');
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

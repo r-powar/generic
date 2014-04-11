@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NameSpace Pattern</title>
+
+    <script>
+
+        window.onload = function(){
+            pattern_namespace();
+
+        }
+        function pattern_namespace(){
+            WEATHERAPP = {};
+            WEATHERAPP.weathermodule = {};
+            WEATHERAPP.countyModule = {};
+            WEATHERAPP.weathermodule.getWeatherByCityName = function(city){
+                //AJAX call to get weather information about the city
+            };
+            WEATHERAPP.countyModule.sortByCountyName = function sortByCountyName(a,b){
+
+            };
+            WEATHERAPP.countyModule.CA_county_info = [];
+
+
+        }
+
+        function anti_pattern_GlobalPollution(){
+            var cityinfo = ['Los Angeles', 'Dublin', 'San Diego','San Francisco'];
+
+            function getWeather(){
+                //make an AJAX call to get weather information about the city
+            }
+
+            function sortByCountyName(a,b){
+
+            }
+
+            var ca_county_info = [];
+
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

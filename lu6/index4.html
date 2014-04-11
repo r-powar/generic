@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geometry and Scrolling 2</title>
+    <style>
+        #container{
+
+            position: fixed;
+            right:0;
+            top: 100px;
+
+        }
+
+        .btn{
+            position: relative;
+            border-radius: 1em;
+
+
+
+        }
+
+    </style>
+    <script>
+        window.onload = function (){
+
+            var colors = ['#71FF6F','#FFE269', '#FFB63B', '#FF5D2B', '#BF5CFF' ];
+
+            for (var i = 0; i < colors.length; i++ ){
+                var div_ele = document.createElement('div');
+                div_ele.innerHTML = 'All have the same text';
+                document.body.appendChild(div_ele);
+                div_ele.style.backgroundColor = colors[i];
+                div_ele.style.height = window.innerHeight +'px' ;
+
+            }
+
+            var scroll = document.getElementById('container').children;
+            for(var i = 0 ; i < 5 ; i++){
+                scroll[i].onclick = function (evnt){
+                    var index = children.indexOf(evnt.currentTarget);
+                    window.scrollTo(0, window.innerHeight * i);
+                };
+            }
+
+
+        };
+    </script>
+</head>
+<body>
+    <div id ="container">
+        <div class ="btn">1</div>
+        <div class ="bnt">2</div>
+        <div class ="btn">3</div>
+        <div class ="btn">4</div>
+        <div class ="btn">5</div>
+    </div>
+</body>
+</html>

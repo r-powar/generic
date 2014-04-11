@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rounded Corners</title>
+    <style>
+        .span-6{
+            width: 230px;
+            float: left;
+            margin-right: 10px;
+        }
+
+        .last{
+            margin-right: 0;
+
+        }
+
+        div[class^='radius'] {
+            background-color: #EFEFEF;
+            border: 10px solid #000;
+            min-height: 100px;
+        }
+
+        .radius-1{
+            border-radius: 20px;
+        }
+
+        .radius-2{
+            border-radius: 10px/20px;
+        }
+
+        .radius-3{
+            border-radius: 10px 10px 20px / 20px 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="span-6">
+            &nbsp;
+        </div>
+        <div class="span-6">
+            <div class="radius-1"></div>
+        </div>
+        <div class="span-6">
+            <div class="radius-2"></div>
+        </div>
+        <div class="span-6">
+            <div class="radius-3"></div>
+        </div>
+
+       <div class="span-6 last">&nbsp;</div>
+    </div>
+
+</body>
+</html>

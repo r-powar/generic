@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Scripting</title>
+    <script src = 'data.js'></script>
+    <style type="text/css">
+        .container{
+            padding: 1em;
+            margin: 1em;
+            border: 1px solid grey;
+        }
+
+        .properties{
+            padding: .15em;
+            margin: .5em;
+            background-color: #69FFE8;
+            border-radius: 0.15em;
+            box-shadow: 1px 1px 5px #818181;
+        }
+
+        .span_properties{
+            font-size: 0.85em;
+            padding: .15em;
+            margin: .15em;
+            display: inline-block;
+            color: #457F5E;
+        }
+
+        .span_value{
+            font-size: 1em;
+            padding: .15em;
+            margin: .15em;
+            display: inline-block;
+            color: #22402F;
+
+
+
+        }
+    </style>
+    <script>
+        window.onload = function(){
+//            selecting_span1();
+//            selecting_span2();
+//            selecting_attr();
+              printCountyData();
+
+        };
+
+        function selecting_span2(){
+            var element = document.querySelector('.span2');
+            console.log(element);
+            var x = element.innerHTML ='This is changed';
+            console.log(x);
+
+        }
+
+        function selecting_span1(){
+            var element = document.querySelectorAll('.span1');
+            console.log(element);
+
+            //console.dir() /* to properties of an object*/
+        }
+
+        function selecting_attr(){
+            var element = document.querySelector('span[class= "span2"]');
+            console.log(element);
+
+            var element2 = document.querySelectorAll('span[class= "span1"]');
+            console.log(element2);
+        }
+
+        function printCountyData(){
+            console.log('inside county_info...');
+            for(var i = 0, len = county_info.length; i < len; i++){
+
+                var element = document.createElement('div');
+                document.body.appendChild(element);
+                //element.innerHTML = JSON.stringify(county_info[i]);
+                element.className = 'container';
+
+                for(var prop in county_info[i]){
+
+                    var span_element = document.createElement('span');
+                    element.appendChild(span_element);
+                    //span_element.innerHTML = county_info[i][prop];
+                    span_element.className = 'properties';
+
+
+                    var span_child = document.createElement('span');
+                    span_element.appendChild(span_child);
+
+                    span_child.innerHTML = prop;
+                    span_child.className = 'span_properties';
+
+                    var span_value = document.createElement('span');
+                    span_element.appendChild(span_value);
+                    span_value.innerHTML = county_info[i][prop];
+                    span_value.className = 'span_value';
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+
+</body>
+</html>

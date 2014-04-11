@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Factory Pattern</title>
+    <script>
+        function Subaru(){
+            this.engine = '2.5l';
+
+        }
+
+        function Camry(){
+            this.engine = '3.6l';
+        }
+
+        //var cam = new Camry();
+        //var suba = new Subaru();
+
+      function Factory(make){
+          var car = this;
+
+          //Camry is acting a static function for Factory
+          Factory.Camry = function(car){
+              car.engine = '2.5l';
+          };
+
+          Factory.Subaru = function(car){
+              car.engine = '3.5l';
+          };
+
+          Factory.Cadillac = function(car){
+              car.engine = '4.5l';
+          };
+
+          Factory[make](car);
+
+          //we dont necessarily need a return car statment as by default "this" is returned
+          return car;
+
+
+      }
+
+      console.log(new Factory('Camry'));
+      console.log(new Factory('Subaru'));
+      console.log(new Factory('Cadillac'));
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

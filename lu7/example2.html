@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arguments Property of Functions</title>
+    <script>
+        function cube(a,b,c,d){
+            //console.log([1,2,3].indexOf(3));
+            //console.log(arguments.indexOf);//indexOf does not exist as property only available to arrays
+
+            console.log(Array.prototype.map.call(arguments,function(element){
+                return element * element * element;
+            }));
+            //console.log(Array.prototype.indexOf.call(arguments,3));//its Array.prototype because you cannot access it from Array() constructor
+
+
+        }
+
+        //cube(1,2,3,4);
+
+        //var arr = new Array();
+        //console.dir(Object.getPrototypeOf(arr));
+
+        window.onload = function(){
+        var ol = document.getElementById('child');
+        var arr = Array.prototype.map.call(ol.children,function(element){
+
+           for(var i =0; i < element.children.length; i++){
+
+           return {
+               name: element.children[i].innerHTML.split(': ')[1],
+               capital: element.children[i+1].innerHTML.split(': ')[1],
+               lat: element.children[i+2].innerHTML.split(': ')[1],
+               long: element.children[i+3].innerHTML.split(': ')[1]
+           };
+
+          }
+        });
+
+        var json_data = JSON.stringify(arr);
+
+        console.log(json_data);
+
+
+        };
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+<ol id="child">
+<li>
+    <p>Name: Alabama</p>
+    <p>Capital Name: Montgomery</p>
+    <p>Capital Latitude: 32.361538</p>
+    <p>Capital Longitude: -86.279118</p>
+</li>
+<li>
+    <p>Name: Alaska</p>
+    <p>Capital Name: Juneau</p>
+    <p>Capital Latitude: 58.301935</p>
+    <p>Capital Longitude: -134.419740</p>
+</li>
+<li>
+    <p>Name: Arizona</p>
+    <p>Capital Name: Phoenix</p>
+    <p>Capital Latitude: 33.448457</p>
+    <p>Capital Longitude: -112.073844</p>
+</li>
+<li>
+    <p>Name: Arkansas</p>
+    <p>Capital Name: Little Rock</p>
+    <p>Capital Latitude: 34.736009</p>
+    <p>Capital Longitude: -92.331122</p>
+</li>
+<li>
+    <p>Name: California</p>
+    <p>Capital Name: Sacramento</p>
+    <p>Capital Latitude: 38.555605</p>
+    <p>Capital Longitude: -121.468926</p>
+</li>
+<li>
+    <p>Name: Colorado</p>
+    <p>Capital Name: Denver</p>
+    <p>Capital Latitude: 39.7391667</p>
+    <p>Capital Longitude: -104.984167</p>
+</li>
+<li>
+    <p>Name: Connecticut</p>
+    <p>Capital Name: Hartford</p>
+    <p>Capital Latitude: 41.767</p>
+    <p>Capital Longitude: -72.677</p>
+</li>
+<li>
+    <p>Name: Delaware</p>
+    <p>Capital Name: Dover</p>
+    <p>Capital Latitude: 39.161921</p>
+    <p>Capital Longitude: -75.526755</p>
+</li>
+<li>
+    <p>Name: Florida</p>
+    <p>Capital Name: Tallahassee</p>
+    <p>Capital Latitude: 30.4518</p>
+    <p>Capital Longitude: -84.27277</p>
+</li>
+<li>
+    <p>Name: Georgia</p>
+    <p>Capital Name: Atlanta</p>
+    <p>Capital Latitude: 33.76</p>
+    <p>Capital Longitude: -84.39</p>
+</li>
+<li>
+    <p>Name: Hawaii</p>
+    <p>Capital Name: Honolulu</p>
+    <p>Capital Latitude: 21.30895</p>
+    <p>Capital Longitude: -157.826182</p>
+</li>
+<li>
+    <p>Name: Idaho</p>
+    <p>Capital Name: Boise</p>
+    <p>Capital Latitude: 43.613739</p>
+    <p>Capital Longitude: -116.237651</p>
+</li>
+<li>
+    <p>Name: Illinois</p>
+    <p>Capital Name: Springfield</p>
+    <p>Capital Latitude: 39.783250</p>
+    <p>Capital Longitude: -89.650373</p>
+</li>
+<li>
+    <p>Name: Indiana</p>
+    <p>Capital Name: Indianapolis</p>
+    <p>Capital Latitude: 39.790942</p>
+    <p>Capital Longitude: -86.147685</p>
+</li>
+<li>
+    <p>Name: Iowa</p>
+    <p>Capital Name: Des Moines</p>
+    <p>Capital Latitude: 41.590939</p>
+    <p>Capital Longitude: -93.620866</p>
+</li>
+<li>
+    <p>Name: Kansas</p>
+    <p>Capital Name: Topeka</p>
+    <p>Capital Latitude: 39.04</p>
+    <p>Capital Longitude: -95.69</p>
+</li>
+<li>
+    <p>Name: Kentucky</p>
+    <p>Capital Name: Frankfort</p>
+    <p>Capital Latitude: 38.197274</p>
+    <p>Capital Longitude: -84.86311</p>
+</li>
+<li>
+    <p>Name: Louisiana</p>
+    <p>Capital Name: Baton Rouge</p>
+    <p>Capital Latitude: 30.45809</p>
+    <p>Capital Longitude: -91.140229</p>
+</li>
+<li>
+    <p>Name: Maine</p>
+    <p>Capital Name: Augusta</p>
+    <p>Capital Latitude: 44.323535</p>
+    <p>Capital Longitude: -69.765261</p>
+</li>
+<li>
+    <p>Name: Maryland</p>
+    <p>Capital Name: Annapolis</p>
+    <p>Capital Latitude: 38.972945</p>
+    <p>Capital Longitude: -76.501157</p>
+</li>
+<li>
+    <p>Name: Massachusetts</p>
+    <p>Capital Name: Boston</p>
+    <p>Capital Latitude: 42.2352</p>
+    <p>Capital Longitude: -71.0275</p>
+</li>
+<li>
+    <p>Name: Michigan</p>
+    <p>Capital Name: Lansing</p>
+    <p>Capital Latitude: 42.7335</p>
+    <p>Capital Longitude: -84.5467</p>
+</li>
+<li>
+    <p>Name: Minnesota</p>
+    <p>Capital Name: Saint Paul</p>
+    <p>Capital Latitude: 44.95</p>
+    <p>Capital Longitude: -93.094</p>
+</li>
+<li>
+    <p>Name: Mississippi</p>
+    <p>Capital Name: Jackson</p>
+    <p>Capital Latitude: 32.320</p>
+    <p>Capital Longitude: -90.207</p>
+</li>
+<li>
+    <p>Name: Missouri</p>
+    <p>Capital Name: Jefferson City</p>
+    <p>Capital Latitude: 38.572954</p>
+    <p>Capital Longitude: -92.189283</p>
+</li>
+<li>
+    <p>Name: Montana</p>
+    <p>Capital Name: Helana</p>
+    <p>Capital Latitude: 46.595805</p>
+    <p>Capital Longitude: -112.027031</p>
+</li>
+<li>
+    <p>Name: Nebraska</p>
+    <p>Capital Name: Lincoln</p>
+    <p>Capital Latitude: 40.809868</p>
+    <p>Capital Longitude: -96.675345</p>
+</li>
+<li>
+    <p>Name: Nevada</p>
+    <p>Capital Name: Carson City</p>
+    <p>Capital Latitude: 39.160949</p>
+    <p>Capital Longitude: -119.753877</p>
+</li>
+<li>
+    <p>Name: New Hampshire</p>
+    <p>Capital Name: Concord</p>
+    <p>Capital Latitude: 43.220093</p>
+    <p>Capital Longitude: -71.549127</p>
+</li>
+<li>
+    <p>Name: New Jersey</p>
+    <p>Capital Name: Trenton</p>
+    <p>Capital Latitude: 40.221741</p>
+    <p>Capital Longitude: -74.756138</p>
+</li>
+<li>
+    <p>Name: New Mexico</p>
+    <p>Capital Name: Santa Fe</p>
+    <p>Capital Latitude: 35.667231</p>
+    <p>Capital Longitude: -105.964575</p>
+</li>
+<li>
+    <p>Name: New York</p>
+    <p>Capital Name: Albany</p>
+    <p>Capital Latitude: 42.659829</p>
+    <p>Capital Longitude: -73.781339</p>
+</li>
+<li>
+    <p>Name: North Carolina</p>
+    <p>Capital Name: Raleigh</p>
+    <p>Capital Latitude: 35.771</p>
+    <p>Capital Longitude: -78.638</p>
+</li>
+<li>
+    <p>Name: North Dakota</p>
+    <p>Capital Name: Bismarck</p>
+    <p>Capital Latitude: 48.813343</p>
+    <p>Capital Longitude: -100.779004</p>
+</li>
+<li>
+    <p>Name: Ohio</p>
+    <p>Capital Name: Columbus</p>
+    <p>Capital Latitude: 39.962245</p>
+    <p>Capital Longitude: -83.000647</p>
+</li>
+<li>
+    <p>Name: Oklahoma</p>
+    <p>Capital Name: Oklahoma City</p>
+    <p>Capital Latitude: 35.482309</p>
+    <p>Capital Longitude: -97.534994</p>
+</li>
+<li>
+    <p>Name: Oregon</p>
+    <p>Capital Name: Salem</p>
+    <p>Capital Latitude: 44.931109</p>
+    <p>Capital Longitude: -123.029159</p>
+</li>
+<li>
+    <p>Name: Pennsylvania</p>
+    <p>Capital Name: Harrisburg</p>
+    <p>Capital Latitude: 40.269789</p>
+    <p>Capital Longitude: -76.875613</p>
+</li>
+<li>
+    <p>Name: Rhode Island</p>
+    <p>Capital Name: Providence</p>
+    <p>Capital Latitude: 41.82355</p>
+    <p>Capital Longitude: -71.422132</p>
+</li>
+<li>
+    <p>Name: South Carolina</p>
+    <p>Capital Name: Columbia</p>
+    <p>Capital Latitude: 34.000</p>
+    <p>Capital Longitude: -81.035</p>
+</li>
+<li>
+    <p>Name: South Dakota</p>
+    <p>Capital Name: Pierre</p>
+    <p>Capital Latitude: 44.367966</p>
+    <p>Capital Longitude: -100.336378</p>
+</li>
+<li>
+    <p>Name: Tennessee</p>
+    <p>Capital Name: Nashville</p>
+    <p>Capital Latitude: 36.165</p>
+    <p>Capital Longitude: -86.784</p>
+</li>
+<li>
+    <p>Name: Texas</p>
+    <p>Capital Name: Austin</p>
+    <p>Capital Latitude: 30.266667</p>
+    <p>Capital Longitude: -97.75</p>
+</li>
+<li>
+    <p>Name: Utah</p>
+    <p>Capital Name: Salt Lake City</p>
+    <p>Capital Latitude: 40.7547</p>
+    <p>Capital Longitude: -111.892622</p>
+</li>
+<li>
+    <p>Name: Vermont</p>
+    <p>Capital Name: Montpelier</p>
+    <p>Capital Latitude: 44.26639</p>
+    <p>Capital Longitude: -72.57194</p>
+</li>
+<li>
+    <p>Name: Virginia</p>
+    <p>Capital Name: Richmond</p>
+    <p>Capital Latitude: 37.54</p>
+    <p>Capital Longitude: -77.46</p>
+</li>
+<li>
+    <p>Name: Washington</p>
+    <p>Capital Name: Olympia</p>
+    <p>Capital Latitude: 47.042418</p>
+    <p>Capital Longitude: -122.893077</p>
+</li>
+<li>
+    <p>Name: West Virginia</p>
+    <p>Capital Name: Charleston</p>
+    <p>Capital Latitude: 38.349497</p>
+    <p>Capital Longitude: -81.633294</p>
+</li>
+<li>
+    <p>Name: Wisconsin</p>
+    <p>Capital Name: Madison</p>
+    <p>Capital Latitude: 43.074722</p>
+    <p>Capital Longitude: -89.384444</p>
+</li>
+<li>
+    <p>Name: Wyoming</p>
+    <p>Capital Name: Cheyenne</p>
+    <p>Capital Latitude: 41.145548</p>
+    <p>Capital Longitude: -104.802042</p>
+</li>
+</ol>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ready State Change Event</title>
+    <script>
+//        window.onload = function(){
+//
+////            var element = document.getElementsByTagName('head');
+////            var external_script = document.createElement('script');
+////            external_script.src = 'external.js';
+////            element[0].appendChild(external_script);
+//
+//            console.log('internal script');
+//        };
+
+        window.addEventListener('load',function(){
+
+//            var element = document.getElementsByTagName('head');
+//            var external_script = document.createElement('script');
+//            external_script.src = 'external.js';
+//            element[0].appendChild(external_script);
+
+            console.log('internal script');
+        }, false);
+
+    </script>
+
+    <script src="external.js"></script>
+
+
+</head>
+<body>
+
+</body>
+</html>

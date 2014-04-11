@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JQuery</title>
+    <script src = "jquery.js"></script>
+
+    <script>
+
+       $(function(){
+
+
+           var img = $('<img>', {src:'http://chsvimg.nikon.com/lineup/dslr/d7100/img/sample/img_07_l.jpg', height:'150px'});
+           $(document.body).append(img);
+           $(img).wrap('<div></div>');
+
+
+
+
+       });
+
+        function example1(){
+
+            var elems = $('<div>');
+            console.log(elems);
+            elems.html('Hello World from JQuery');
+            //$(document.body).append(elems);
+
+            document.body.appendChild(elems[0]);
+
+        }
+
+        function example2(){
+            var div_man = $('.div1');
+            div_man[1].innerHTML ="Changed";
+        }
+
+        function raj(){
+            console.log('Hello from Raj');
+
+        }
+
+        function example3() {
+            $('.child[style]','.div1').css({color:"red"});
+        }
+
+        function example4(){
+            var element = $('<div>', {css:{backgroundColor:'green'}});
+            $(document.body).append(element.html("Value"));
+        }
+
+        function example5(){
+            var img = $('<img>', {src:'http://chsvimg.nikon.com/lineup/dslr/d7100/img/sample/img_07_l.jpg', height:'150px'});
+            $(document.body).append(img);
+        }
+
+    </script>
+</head>
+<body>
+
+    <div class="div1">
+        <span class="child" style="">Socrates</span>
+        <span class="child">Plato</span>
+        <span class="child">Archimedis</span>
+    </div>
+    <span class="child" style="">Archimedis</span>
+</body>
+</html>

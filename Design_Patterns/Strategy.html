@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Strategy Pattern</title>
+    <style type="text/css">
+        body {
+            background-color: #3c3f41;
+            color: #eee;
+        }
+        input {
+            background-color: transparent;
+            font: 100 1em 'Open Sans';
+            padding: 0.5em;
+            border: 1px solid #777;
+
+            color: #eee;
+            margin: 0.5em;
+        }
+        input[type='text']{
+            min-width: 20em;
+        }
+        input[type='password']{
+            min-width: 20em;
+        }
+
+        input[type='button']{
+            cursor: pointer;
+        }
+        input[type='button']:hover{
+            background-color: #ffffff;
+            color: #000000;
+            -webkit-transition: background-color 500ms;
+            -moz-transition: background-color 500ms;
+            -o-transition: background-color 500ms ;
+            transition: background-color 500ms;
+        }
+        div{
+            padding-top: 10em;
+            text-align: center;
+        }
+        form{
+            display: inline-block;
+            max-width: 25em;
+            border: 1px solid gray;
+            padding: 2em 0 1.25em 0;
+        }
+
+        span.error{
+            color: red;
+            display: block;
+        }
+    </style>
+
+
+    <script>
+       window.onload = function(){
+           var x = 'asfafegeagewerfas';
+           var p  =x.replace(/[a,e,o,i,u]/g,'');
+           console.log(p);
+
+           var myRe = /d(b+)d/g;
+           var myArray = myRe.exec("cdbbdbsbz");
+           console.log(myArray);
+
+           document.forms.login.onsubmit = function(evnt){
+
+                evnt.preventDefault();
+
+               var reg_name = /^[a-z ,.'-]+$/i;
+               var reg_email = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+               var reg_pwd = /^[a-zA-Z]\w{3,14}$/;
+               var form = document.forms.login;
+               var forms_name = document.forms.login.name;
+               var forms_email = document.forms.login.email;
+               var forms_pwd = document.forms.login.password;
+               //console.log(forms_name.value);
+               var errorspans = form.getElementsByClassName('error');
+
+               while(errorspans[0]){
+                   form.removeChild(errorspans[0]);
+               }
+
+               if(!reg_name.test(forms_name.value)){
+                   var span =  document.createElement('span');
+                   span.innerHTML = "Invalid Name";
+                   span.className = 'error';
+                   form.insertBefore(span,forms_email);
+               }
+
+               if(!reg_email.test(forms_email.value)){
+                   var span =  document.createElement('span');
+                   span.innerHTML = "Invalid Email";
+                   span.className = 'error';
+                   form.insertBefore(span,forms_pwd);
+               }
+
+               if(!reg_pwd.test(forms_pwd.value)){
+                   var span =  document.createElement('span');
+                   span.innerHTML = "Invalid Password";
+                   span.className = 'error';
+                   form.insertBefore(span,document.forms.login.submit);
+               }
+
+
+
+
+           }
+       };
+    </script>
+</head>
+<body>
+<div>
+<form action="" method="POST" name="login">
+    <input type="text" name="name" placeholder="Name" id="name"/>
+
+    <input type="text" name="email" placeholder="Email" id="email"/>
+
+    <input type="password" name="password" placeholder="Password" id="pwd"/>
+    <input type="file"/>
+
+    <input type="submit" value ="Submit" id="submit" name="submit"/>
+</form>
+ </div>
+</body>
+</html>

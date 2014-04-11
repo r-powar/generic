@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Closure</title>
+    <script>
+//        test(); //function declaration are already hoisted
+//        (function (){
+//            console.log('text');
+//        } ());
+//
+//        function test(){
+//            console.log('testing');
+//        }
+//        console.log(x); // assignment is not being hoisted only the variable declaration is being hoisted
+//        var x = 32;
+//
+//        var Counter = (function() {
+//            var privateCounter = 0;
+//            function changeBy(val) {
+//                privateCounter += val;
+//            }
+//            return {
+//                increment: function() {
+//                    changeBy(1);
+//                },
+//                decrement: function() {
+//                    changeBy(-1);
+//                },
+//                value: function() {
+//                    return privateCounter;
+//                }
+//            };
+//        })();
+
+        function createCounter() {
+             var privateCounter = 0;
+             function changeBy(val) {
+        privateCounter += val;
+    }
+    return {
+        increment: function() {
+            changeBy(1);
+        },
+        decrement: function() {
+            changeBy(-1);
+        },
+        value: function() {
+            return privateCounter;
+        }
+    };
+}
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

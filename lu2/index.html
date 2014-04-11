@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Hello</title>
+    <script>
+       window.onload = function (){
+
+           var person = {
+               id:32,
+               email:'xyz@mail.com'
+
+           };
+
+           var customer = Object.create(person);
+
+           console.log(customer.id);
+           console.log(customer.prototype);
+           console.log(Object.getPrototypeOf(customer));
+
+           person.name = 'Raj';
+           console.log(Object.getPrototypeOf(customer));
+
+           var obj ={};
+           console.log(Object.getPrototypeOf(obj));
+
+           var arr = new Array();
+           console.log(Object.getPrototypeOf(arr));
+           console.log(customer.name);
+
+           customer.name='Raj Powar';
+           console.log(customer.name);
+
+
+           var car_obj = {
+               model: 'model',
+               segement: 1
+
+           };
+
+           var toyota = Object.create(car_obj);
+           toyota.company = 'Toyota';
+           console.log(toyota);
+
+           var honda = Object.create(car_obj);
+           honda.comapny = 'Honda';
+           console.log(honda);
+
+
+
+
+           var camry = Object.create(toyota);
+           camry.model = 'Camry';
+           camry.segement = 2;
+           console.log(camry);
+
+
+           var corolla = Object.create(toyota);
+           corolla.model = 'Corolla';
+           corolla.segement = 1;
+           console.log(corolla);
+
+
+
+
+
+
+
+
+
+
+       };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

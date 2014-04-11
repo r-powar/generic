@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gradient</title>
+    <style>
+        .container {
+            width:950px;
+            margin:0 auto;
+        }
+
+        .span-7, .span-10 {
+            float:left;
+            margin-right:10px;
+        }
+        .last {
+            margin-right:0;
+        }
+        .span-7 {width:270px;}
+        .span-10 {width:390px;}
+        .span-10 {
+            background-color: red;
+            background-image: -webkit-gradient(linear,50% 0%,50% 100%,from(#000),to(#FFF));
+            background-image: -moz-linear-gradient(#FD5308,#0392CE);
+            background-image: -o-linear-gradient(#FD5308,#0392CE);
+            background-image: -webkit-linear-gradient(#FD5308,#0392CE);
+            background-image: linear-gradient(#FD5308,#0392CE);
+            min-height: 200px;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="span-7">&nbsp;</div>
+    <div class="span-10"></div>
+    <div class="span-7 last">&nbsp;</div>
+  </div>
+
+</body>
+</html>

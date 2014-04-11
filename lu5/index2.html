@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather</title>
+    <style>
+        span{
+            padding: 0.2em;
+        }
+    </style>
+    <script src="data_gov_weather.js "></script>
+    <script>
+        window.onload = function(){
+            //console.log(county_info[0]);
+            county_info.forEach(
+                    function(elem){
+
+                    //make the call
+
+                    document.body.firstElementChild.appendChild(create_county(elem));
+                    console.log(elem.county_name + ", lat: " + elem.primary_latitude +" , long: "+ elem.primary_longitude);
+            }
+            );
+
+        };
+
+        function create_county(county){
+
+            var div = document.createElement('div');
+            div.className = 'county';
+            //put county information
+
+            var span = document.createElement('span');
+            span.innerHTML = county.county_name;
+            div.appendChild(span);
+
+            //put google maps link
+            var span_map_Link = document.createElement('span');
+            var anchor_map = document.createElement('a');
+            anchor_map.href = 'http://www.google.com/maps/@' + county.primary_latitude + ',' + county.primary_longitude + ',11z';
+            anchor_map.target = '_blank';
+            anchor_map.innerHTML = 'Google Maps';
+            span_map_Link.appendChild(anchor_map);
+            div.appendChild(span_map_Link);
+
+
+            //update with weather data
+            var span_weather_Link = document.createElement('span');
+            var anchor_weather = document.createElement('a');
+            anchor_weather.href = 'http://api.openweathermap.org/data/2.5/weather?lat=' + county.primary_latitude + '&lon=' + county.primary_longitude;
+            anchor_weather.target = '_blank';
+
+            anchor_weather.innerHTML = 'Get Weather Info' ;
+            span_weather_Link.appendChild(anchor_weather);
+            div.appendChild(span_weather_Link);
+
+
+            return div;
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+<div id = 'response'>
+    <div class = 'county'>
+        <span class = "county_name"> </span>
+        <span class="mapLink">
+            <a href=""></a>
+        </span>
+        <span class="weatherLink">
+            <a href=" "></a>
+        </span>
+
+
+    </div>
+</div>
+
+</body>
+</html>

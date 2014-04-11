@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plotting MAP</title>
+    <script src="jquery.js"></script>
+    <script src="raphael-min.js"></script>
+    <script src="kartograph.js"></script>
+    <script src="data.js"></script>
+    <script src="jquery.qtip.js"></script>
+
+    <script>
+
+        var symbols;
+
+        data_arr.forEach(function(elem){
+            elem.weather = "Gathering Weather Data...";
+        });
+
+        var arrCapitals = data_arr.map(function(elem){
+           return elem.capital;
+        });
+
+        console.log(arrCapitals.indexOf("Bismark"));
+
+        window.onload= function(){
+
+        var map = kartograph.map('#map',600,400);
+
+        map.loadMap('usa.svg',function(){
+            map.addLayer('usa',{
+                styles:{
+
+                    'stroke-width': '0.2pt',
+                    'stroke-linejoin': 'round',
+                    'stroke': 'red',
+                    fill: 'pink'
+
+                }
+            });
+
+             symbols = map.addSymbols({
+                type: $K.Bubble,
+                radius: function(city){
+                    return 7;
+                },
+                style: 'stroke-width:0; fill:red',
+                data: data_arr,
+                location: function(city){return[city.long,city.lat]},
+                text: function(city){return city.capital},
+                tooltip: function(state){
+                    return '<h3>'+state.capital+'</h3><div>Getting weather info...</div>';
+
+                }
+
+            })
+        },{
+            zoom: 1.0
+        }).done(function(){
+
+            $('circle.bubble').hover(function(){
+                var index = $(this).attr('data-hasqtip');
+                var capital = data_arr[index].capital;
+                var _id = 'q-tip' + index + '-content';
+                var elem = document.getElementById(_id);
+
+                if(elem){
+                    elem.children[1].innerHTML = 'Getting Weather Data...';
+
+                }
+
+                getWeatherData(capital,index,function(obj,index){
+                    console.log(index);
+                    var _id = 'q-tip' + index + '-content';
+                    var elem = document.getElementById(_id);
+                    var div_content = elem.children[1];
+                    $(div_content).fadeOut('fast', function(){
+                        div_content.innerHTML = 'Weather here: ' + obj.weather[0].description;
+                    });
+
+                    $(div_content).fadeIn();
+                    console.log(document.body.children[2].innerHTML);
+
+                });
+
+            }, function(){});
+
+        });
+
+        };
+
+        function getWeatherData(capital,index,callback){
+            var xhr = new XMLHttpRequest();
+            var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + ',us';
+            xhr.open('GET', url);
+            xhr.onreadystatechange = function(){
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    var obj = JSON.parse(xhr.responseText);
+                    callback(obj, index);
+                }
+
+            };
+
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>
