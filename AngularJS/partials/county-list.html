@@ -1,0 +1,5 @@
+<div>
+    <div ng-repeat="county in counties | orderBy:'name'">
+        <a href="#/angular/counties/{{$index}}" ng-bind="county.name"></a>
+    </div>
+</div>

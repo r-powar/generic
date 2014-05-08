@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="data.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            var arr = JSON.parse(localStorage.getItem('data'));
+            //console.log(obj);
+
+            var county_name = arr.map(function(county){
+                if(county.county_name)
+                    return county.county_name.toString().trim().toLowerCase();
+                else
+                return' ';
+            });
+
+            for(var i =0; i <localStorage.length; i++){
+                var key = localStorage.key(i);
+                console.log(localStorage.key(i));
+                console.log(localStorage.getItem(key));
+            }
+
+            $('#btn').click(function(){
+                var input = $('#county_name').val();
+                input.trim().toLocaleLowerCase();
+                var index = county_name.indexOf(input);
+                var obj = arr[index];
+                console.log(obj);
+            });
+
+
+
+
+        });
+    </script>
+</head>
+<body>
+<input type="text" id="county_name"/>
+<button id="btn">Get County Information</button>
+<div id="container">
+    County Information goes here.....
+</div>
+</body>
+</html>

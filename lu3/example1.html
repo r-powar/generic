@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DOM Scripting</title>
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/object.css"/>
+    <script type="text/javascript" src='test.js'></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+           console.log('testing');
+            var span = document.getElementById('output_data');
+            span.number_of_clicks = 0;
+            span.onclick = function(){
+                span.innerHTML = 'Number of clicks: ' + ++span.number_of_clicks;
+            }
+        });
+    </script>
+
+</head>
+<body>
+
+    <div id="print_to_console">
+        ('fire bug console')<br/>
+    </div>
+
+    <div class="center">DOM Scripting</div>
+
+    <div class="center">
+        <span class="describe_box">program output</span>
+        <span class="opbox" id="output_data">&lt;No output as of now!&gt;</span>
+    </div>
+
+    <div class="center">
+        <a id="changeMe" href="javascript: var link = document.getElementById('changeMe');
+        link.innerHTML= link.innerHTML.split('').reverse().join('');
+        void 0;"></a>
+    </div>
+
+    <div class="timer_bottom_container">
+        <span class="timer_bottom" id="timer_bottom">
+            00:00:00
+        </span>
+    </div>
+
+    <div class="center">
+        <span onmouseout="alert('I told you i will');">
+            I will know when you leave me!
+        </span>
+    </div>
+
+</body>
+</html>

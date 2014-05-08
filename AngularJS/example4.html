@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="countyApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="data.js"></script>
+    <script>
+        var CountyApp = angular.module('countyApp',[]);
+        CountyApp.controller('CountyCtrl', function($scope,$http){
+           $scope.states = county_info;
+
+            $scope.getWeather = function(state){
+               // console.log(state);
+                var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+ state.primary_latitude +'&lon='+state.primary_longitude;
+                $http.get(url).success(function(data){
+                   // console.log(data);
+                    state.weather =
+                    {
+                        description:data.weather[0].description,
+                        imageurl:'http://openweathermap.org/img/w/'+ data.weather[0].icon +'.png'
+                    };
+                });
+            }
+        });
+
+    </script>
+</head>
+<body>
+    <div ng-controller="CountyCtrl">
+        <div class="state" ng-repeat="state in states | orderBy:'name'">
+            {{state.name}}
+
+            <!--javascript:void(0) returns undefined, it prevents href from taking you to a new page-->
+            <a href="javascript:void(0);" ng-click="getWeather(state)">Get Weather Info</a>
+            <span ng-bind="state.weather.description"></span>
+            <img src="{{state.weather.imageurl}}" alt=""/>
+
+        </div>
+    </div>
+</body>
+</html>

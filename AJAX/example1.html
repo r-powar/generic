@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX HTML(Call to openweather)</title>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function(){
+           console.log('test');
+
+            //To make a AJAX call you need a url for data and what method you are going to use
+
+        var xhr = new XMLHttpRequest();
+            //console.dir(xhr);// prints out XMLHTTPrequest objects
+            xhr.open('GET','http://api.openweathermap.org/data/2.5/weather?q=sunnyvale,us');
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    //console.log(xhr.responseText);//resposneText return the string for whatever the server send you
+                    var obj = JSON.parse(xhr.responseText);
+                    var imgurl = document.getElementById('weather');
+                     imgurl.src = 'http://openweathermap.org/img/w/'+ obj.weather[0].icon +'.png';
+                    var weather_desc = document.getElementById('desc');
+                    weather_desc.innerHTML = obj.weather[0].description;
+                   // console.log(obj.weather[0].description);
+                }
+
+
+            };
+
+            xhr.send();
+
+
+
+
+
+        });
+
+    </script>
+</head>
+<body>
+<div id="desc"></div>
+<img src="" alt="" id="weather"/>
+</body>
+</html>

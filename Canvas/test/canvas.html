@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            console.log(Modernizr);
+            if(Modernizr.canvas){
+
+                //checking for canvas through the if conditional statement
+                var canvas = document.getElementById('grayscale');
+
+                //context is used as an API to draw on your element
+                var context = canvas.getContext('2d');
+
+
+                context.fillStyle = '#ccc';
+                context.fillRect(0,0,200,200);
+                context.fillStyle = '#aaa';
+                context.font = '50px Avenir'
+                context.textBaseline = 'top';
+                context.fillText('Canvas', 10,10);
+            }
+        });
+
+    </script>
+</head>
+<body>
+<canvas id="grayscale">
+    No support for HTML5 canvas
+</canvas>
+</body>
+</html>

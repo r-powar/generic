@@ -8,7 +8,7 @@
 
            document.forms[0].onsubmit = function(evnt){
                 evnt.preventDefault();
-                console.log('test');
+                //console.log('test');
                 var request = new XMLHttpRequest();
                 request.open('post', '/contact/submitted');
                 request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -35,7 +35,7 @@
                 var jsonData = {};
                 var validElements = ['input','textarea'];
                 var children = document.forms[0].children;
-                console.log(children);
+                //console.log(children);
                 for(var i = 0; i < children.length; i++ ){
                     if(validElements.indexOf(children[i].localName != -1)){
                         if(children[i].getAttribute('type') != 'submit'){

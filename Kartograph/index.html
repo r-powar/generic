@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery.js"></script>
+    <script src="js/rapahel.js"></script>
+    <script src="js/kartograph.js"></script>
+    <!--<script src="js/jquery.qtips.js"></script>-->
+    <script src="data.js"></script>
+    <script>
+
+        data_arr.forEach(function(elem){
+            elem.weather = "Gathering Weather Data...";
+        });
+
+        var arrCapitals = data_arr.map(function(elem){
+            return elem.capital;
+        });
+
+
+        window.onload = function(){
+
+            //$.fn.qtip.defaults.style.classes = 'ui-tooltip-bootstrap';
+            //$.fn.qtip.defaults.style.def = false;
+
+           var map = $K.map('#map');
+            map.loadMap('image/usa.svg', function() {
+                map.addLayer('layer0', {
+                    styles: {
+                        stroke: 'red',
+                        'stroke-width': '0.2pt',
+                        'stroke-linejoin': 'round'
+
+                    }
+                });
+
+                map.addSymbols({
+                    type: $K.Bubble,
+                    radius: function (city) {
+                        return 7;
+                    },
+                    style: 'stroke-width:0',
+                    data: data_arr,
+                    location: function (city) {
+                        return[city.long, city.lat]
+                    },
+                    text: function (city) {
+                        return city.capital
+                    },
+                    tooltip: function (state) {
+                        return '<h3>' + state.capital + '</h3><div>Getting weather info...</div>';
+                    }
+
+                })
+            }, {
+                zoom: 1.0
+            }).done(function(){
+
+                $('circle_bubble').hover(function(){
+                    var index = $(this).attr('data-hasqtip');
+                    var capital = data_arr[index].capital;
+                    var _id = 'q-tip' + index + '-content';
+                    var elem = document.getElementById(_id);
+
+                    if(elem){
+                        elem.children[1].innerHTML = 'Getting Weather Data...';
+
+                    }
+                });
+            });
+
+
+
+        };
+    </script>
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>

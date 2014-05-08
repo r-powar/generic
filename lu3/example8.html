@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/object.css"/>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script>
+        window.onload = function(){
+
+            log('window.location = ' + window.location);
+            log('document.location = '+ document.location);
+            log('window.location.href = '+ location.href);
+            log('host: '+ location.host);
+            log('pathname: '+ location.pathname);
+            log('protocol: '+ location.protocol);
+            log('hostname: '+ location.hostname);
+            log('port: '+ location.port);
+            log('search: '+ location.search);
+
+            document.getElementById('a_top').onclick = function(){
+              log('');
+                log('location: '+ location);
+                log('location.hash: '+ location.hash);
+            };
+
+            extractQueryParameters(location.search);
+        };
+
+        function log(strval){
+            var op = document.getElementById('output_data');
+            op.innerHTML += strval + '<br>';
+
+        }
+
+        function extractQueryParameters(query){
+            var key_value_pairs = query.substring(1).split('&');
+            var pairs = [];
+            key_value_pairs.forEach(function(key_value_pair){
+                var pos = key_value_pair.indexOf('=');
+                if(pos !== -1){
+                    pairs.push({
+                       key: key_value_pair.substring(0,pos),
+                       value: key_value_pair.substring(pos+1)
+                    });
+                }
+            });
+            console.log(pairs);
+            return pairs;
+        }
+    </script>
+</head>
+<body>
+<div class="center">
+    Generic Examples - Window Object<br/>
+    <a href="#bottom_of_page">Go to the bottom of the page!</a>
+</div>
+<div class="center" style="height:500px">
+    <span class="describe_box">program output log</span>
+    <span class="opbox" id="output_data"> </span>
+</div>
+<div class="center" id="bottom_of_page">
+    Bottom of Page!
+    <br/>
+    <a href="#ptiny_to_console" id="a_top">GO to top of page!</a>
+</div>
+</body>
+</html>

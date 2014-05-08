@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uploading Test Info</title>
+    <script>
+        window.onload = function(){
+            document.forms[0].onsubmit = function(evnt){
+              //evnt.preventDefault();
+                var request = new XMLHttpRequest();
+                request.open('post','upload/submitted');
+                request.setRequestHeader('Content-Type','application/json;charset=UTF-8');
+                request.onreadystatechange = function(){
+                  if(request.status === 200 && request.readyState === 4){
+                      var response = request.responseText;
+                      console.log(response);
+                  }
+                };
+            };
+        }
+
+    </script>
+</head>
+<body>
+<div>
+    <form action="/upload/submitted" method="POST" id="form">
+        <input type="file" name="file"/><br/><br/>
+        <input type="text" name="description" placeholder="Test Description"/><br/><br/>
+        <input type="text" name="name" placeholder="Uploader Name"/><br/><br/>
+        <input type="submit" value="Submit"/>
+
+    </form>
+
+    </div>
+
+
+</body>
+</html>

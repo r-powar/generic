@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+<h1></h1>
+<p>
+<% testdata.forEach(function(element) { %>
+    <p> <%= element.question %> </p>
+<ul>
+    <% element.options.forEach(function(option){ %>
+    <li><%= option %></li>
+    <% }) %>
+</ul>
+
+    <% }) %>
+
+</p>
+</body>
+</html>

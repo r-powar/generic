@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/object.css"/>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script>
+        window.onload = function(){
+
+            var elem = document.getElementsByTagName('head');
+            var externalScript = document.createElement('script');
+            externalScript.src = '2blocking_script.js';
+            elem[0].appendChild(externalScript);
+
+            };
+
+    </script>
+</head>
+<body>
+<div id="print_to_console">(view fire bug)</div>
+<div>
+    <div class="center">I feel "rendered"!</div>
+</div>
+</body>
+</html>

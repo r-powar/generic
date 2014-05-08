@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>3d transformation - Rotate about an axis</title>
+    <style>
+
+        .container{
+            margin:12%;
+            width:850px;
+        }
+        .threed {
+            width: 250px;
+            text-align:center;
+            outline: 4px dashed silver;
+            -moz-transform: rotateX(15deg) rotateY(45deg);
+            -ms-transform: rotateX(15deg) rotateY(45deg);
+            -webkit-transform: rotateX(15deg) rotateY(45deg);
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            float:left;
+        }
+        .threed div{
+            background-color: white;
+            border: 10px solid black;
+            padding: 10px;
+            text-align: center;
+            -moz-transition: -moz-transform 2s;
+            -ms-transition: -ms-transform 2s;
+            -webkit-transition: -webkit-transform 2s;
+
+        }
+        .trans-x{
+            -webkit-transform: rotateX(-60deg);
+            -ms-transform: rotateX(-60deg);
+            -moz-transform: rotateX(-60deg);
+        }
+
+        .threed:hover .trans-x {
+            -moz-transform: rotateX(-360deg);
+            -ms-transform: rotateX(-360deg);
+            -webkit-transform: rotateX(-360deg);
+        }
+        .trans-y{
+            -webkit-transform: rotateY(22.5deg);
+            -ms-transform: rotateY(22.5deg);
+            -moz-transform: rotateY(22.5deg);
+        }
+
+        .threed:hover .trans-y {
+            -moz-transform: rotateY(-360deg);
+            -ms-transform: rotateY(-360deg);
+            -webkit-transform: rotateY(-360deg);
+        }
+        .trans-z{
+            -webkit-transform: rotateZ(22.5deg);
+            -ms-transform: rotateZ(22.5deg);
+            -moz-transform: rotateZ(22.5deg);
+        }
+
+        .threed:hover .trans-z {
+            -moz-transform: rotateZ(-360deg);
+            -ms-transform: rotateZ(-360deg);
+            -webkit-transform: rotateZ(-360deg);
+        }
+
+    </style>
+</head>
+<body>
+<div class='container'>
+    <div class='threed'>
+        <div class='trans-x'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+    <div class='threed'>
+        <div class='trans-y'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+    <div class='threed'>
+        <div class='trans-z'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+</div>
+</body>

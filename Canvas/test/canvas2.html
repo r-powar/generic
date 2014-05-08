@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            console.log(Modernizr);
+            if(Modernizr.canvas){
+                var img = new Image();
+                img.src = '../img/img1.jpg';
+                img.addEventListener('load',function(evnt){
+                   console.log(this);
+                    var canvas = document.getElementById('grayscale');
+                    var div = document.getElementById('counter');
+                    canvas.height = 400;
+                    canvas.width = 700;
+                    var context = canvas.getContext('2d');
+                    var self = this;
+                    var multiplier = 1;
+
+
+                    var interval_id = window.setInterval(function(){
+                        multiplier += 1;
+                        multiplier === 1500 ? (function(){
+                            clearInterval(interval_id);
+                            context.globalAlpha = 0.5;
+                            context.fillStyle = '#aaa';
+                            context.font = '30px Avenir';
+                            context.textBaseline = 'hanging';
+                            context.fillText('Raj',300,400);
+                        }()) : false;
+                        var h = 0.7 * multiplier;
+                        var m = 0.4 * multiplier;
+                        div.innerHTML = multiplier;
+                        context.drawImage(self,0,0,700,568,0,0,h,m);
+                    }, 1);
+
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+<canvas id="grayscale">
+    No support for HTML5
+</canvas>
+
+<div id="counter"></div>
+</body>
+</html>

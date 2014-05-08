@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forecast</title>
+    <style>
+        span{
+            display: inline-block;
+            margin: .85em;
+            font: 100 1em Avenir;
+            border-radius: 0.15em;
+            background-color: #ccc;
+            color: #555;
+            padding: .15em 0.5em;
+        }
+
+        span:hover{
+            background-color: #555555;
+            color: #ccc;
+            -moz-transition:all 500ms ease;
+            -webkit-transition:all 500ms ease;
+            transition: all 500ms ease;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var xhr2 = new XMLHttpRequest();
+            xhr2.open('GET','http://api.openweathermap.org/data/2.5/forecast?q=sunnyvale,us');
+            var div = document.getElementById('container');
+            xhr2.onreadystatechange = function(){
+                if(xhr2.readyState === 4){
+                    var obj = JSON.parse(xhr2.responseText);
+
+                    for(var i = 0; i < obj.list.length; i++){
+                        var desc = obj.list[i].weather[0].description;
+                        var imgurl = 'http://openweathermap.org/img/w/'+ obj.list[i].weather[0].icon +'.png';
+                        var date = new Date(obj.list[i].dt * 1000);
+                        weatherDescription(desc,div,imgurl,date);
+                       // console.log(obj.list[i].setUTCDate(dt));
+                        //var date = obj.list[i].dt;
+                        //var d = new Date(date * 1000);
+                        //console.log(d);
+
+                    }
+
+
+                }
+            };
+
+            xhr2.send();
+
+            function weatherDescription(weather_description,div,imageurl,date){
+                //creating a span elemnet
+                //set the span element innerHTML to weather description
+                //append it to the div
+                var span_container = document.createElement('span');
+
+
+                var span = document.createElement('span');
+                span.innerHTML = weather_description;
+                span_container.appendChild(span);
+                div.appendChild(span_container);
+
+                var img = document.createElement('img');
+                img.src = imageurl;
+                span_container.appendChild(img);
+
+                var span_2 = document.createElement('span');
+                span_container.appendChild(span_2);
+                span_2.innerHTML = date;
+
+
+
+
+            }
+        };
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

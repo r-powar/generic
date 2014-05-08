@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>3d transformation Scale3D</title>
+    <style>
+
+        .container{
+            margin:12%;
+            width:850px;
+        }
+        .threed {
+            width: 250px;
+            text-align:center;
+            outline: 4px dashed silver;
+            -moz-transform: rotateX(15deg) rotateY(45deg);
+            -ms-transform: rotateX(15deg) rotateY(45deg);
+            -webkit-transform: rotateX(15deg) rotateY(45deg);
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            float:left;
+        }
+        .threed div{
+            background-color: white;
+            border: 10px solid black;
+            padding: 10px;
+            text-align: center;
+            -moz-transition: -moz-transform 2s;
+            -ms-transition: -ms-transform 2s;
+            -webkit-transition: -webkit-transform 2s;
+
+        }
+        .trans-xy {
+            -moz-transform: scaleX(1.5) scaleY(1.5);
+            -ms-transform: scaleX(1.5) scaleY(1.5);
+            -webkit-transform: scaleX(1.5) scaleY(1.5);
+        }
+        .trans-z {
+            -moz-transform: scaleZ(2.5) translateZ(10px);
+            -ms-transform: scaleZ(2.5) translateZ(10px);
+            -webkit-transform: scaleZ(2.5) translateZ(10px);
+        }
+        .trans-xyz {
+            -moz-transform: scale3d(1.25,1.25,4) translateZ(10px);
+            -ms-transform: scale3d(1.25,1.25,4) translateZ(10px);
+            -webkit-transform: scale3d(1.25,1.25,4) translateZ(10px);
+        }
+        .threed:hover .trans-xy {
+            -moz-transform: scaleX(1) scaleY(1);
+            -ms-transform: scaleX(1) scaleY(1);
+            -webkit-transform: scaleX(1) scaleY(1);
+        }
+        .threed:hover .trans-z {
+            -moz-transform: scaleZ(1) translateZ(0);
+            -ms-transform: scaleZ(1) translateZ(0);
+            -webkit-transform: scaleZ(1) translateZ(0);
+        }
+        .threed:hover .trans-xyz {
+            -moz-transform: scale3d(1,1,1) translateZ(0);
+            -ms-transform: scale3d(1,1,1) translateZ(0);
+            -webkit-transform: scale3d(1,1,1) translateZ(0);
+        }
+    </style>
+</head>
+<body>
+<div class='container'>
+    <div class='threed'>
+        <div class='trans-xy'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+    <div class='threed'>
+        <div class='trans-z'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+    <div class='threed'>
+        <div class='trans-xyz'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+</div>
+</body>

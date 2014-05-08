@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <title></title>
+    <script src="../testinfo.js"></script>
+    <style>
+        #heading1{
+            display: inline-block;
+            max-width: 25em;
+            /*border: 1px solid grey;*/
+            padding: 2em 0 1.25em 0;
+            margin-left: 500px;
+            margin-top: 5px;
+            font-size: 50px;
+        }
+
+        .subheadings{
+
+            display: inline-block;
+            max-width: 45em;
+            border: 1px solid grey;
+            padding: 2em 1.5em 1.25em 1.5em;
+            font-size: 50px;
+
+        }
+
+        #content{
+            text-align: center;
+            padding-top: 50px;
+            padding-bottom: 500px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="heading1">TESTS</div>
+<div id="content">
+<div class="subheadings">
+    TESTID
+    <% for(var i = 0; i < testids.length; i++) { %>
+    <a href="/tests/<%= testids[i] %>"><%= testids[i] %></a>
+    <% } %>
+
+</div>
+<div class="subheadings">DESCRIPTION</div>
+<div class="subheadings">UPLOADER</div>
+</div>
+
+</body>
+</html>

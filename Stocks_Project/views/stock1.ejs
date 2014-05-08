@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Stocks</title>
+
+    <style>
+
+        .red{
+            color:red;
+        }
+
+        .green{
+            color:green;
+        }
+
+        #search{
+
+            display: block;
+            margin: 0 auto;
+        }
+
+       .main{
+           border: 1px solid red;
+           margin-top: 1em;
+           margin-bottom: 1em;
+        }
+
+        #hidden{
+            position: fixed;
+            height:100%;
+            width: 100%;
+            display: none;
+            z-index: 999;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+    </style>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+
+    <script>
+
+        $(function(){
+            document.getElementById('search').onkeydown = function(evnt){
+
+                if(evnt.keyCode == 13){
+                    ajax_call(evnt.target.value);
+                }
+            };
+
+
+
+
+
+
+
+
+
+        });
+
+        function display_change(change, arr_elements){
+            var data = change.split(' - ')[1].trim();
+            var class_name = data.split('%')[0] > 0 ? 'green' : 'red';
+            //console.log(arr_elements[0]);
+            $(arr_elements[0]).html(data);
+            arr_elements.forEach(function(element){
+                $(element).attr('class', class_name);
+            });
+
+
+        }
+
+
+        function ajax_call(symbol){
+                var url = 'http://query.yahooapis.com/v1/public/yql';
+                var data = "select * from yahoo.finance.quotes where symbol in ('"+ symbol +"')";
+
+                var query = 'q=' + data + "&format=json&diagnostics=true&env=http://datatables.org/alltables.env";
+
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url + '?' + query);
+                xhr.onreadystatechange = function(){
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var obj = JSON.parse(xhr.responseText);
+                        console.log(obj);
+
+                        var $div = $('<div>').addClass('main');
+
+
+                        var access = obj.query.results.quote;
+                        console.log(obj.query.results.quote['symbol']);
+
+
+                        var $div2 = $('<div>').html(access.Name).appendTo($div);
+
+                        var $div3 = $('<div>').html('NASDAQ: ').appendTo($div);
+
+                        var $span1 = $('<span>').html(access.symbol).appendTo($div3);
+                        var $span2 = $('<span>').html(" "+ (new Date(obj.query.created)).toString()).appendTo($div3);
+
+                        var $div4 = $('<div>').appendTo($div);
+                        var $span3 = $('<span>').html(access.Ask).appendTo($div4);
+                        //var $span4 = $('<span>').html(access.Change_PercentChange).appendTo($div4);
+                        var $span5 = $('<span>').appendTo($div4);
+                        display_change(access.Change_PercentChange, [$span5]);
+
+                        var $div5 = $('<div>').appendTo($div);
+                        var $span6 = $('<span>').html('High:' + access.YearHigh + ' Low:' + access.YearLow).appendTo($div5);
+
+                        $(document.body).append($div);
+
+
+                       $div.click(function() {
+                           $('#hidden').css('display', 'block');
+                       });
+
+
+
+                    }
+                };
+                xhr.send();
+
+            }
+
+
+    </script>
+</head>
+<body>
+
+<div id="hidden">
+    <div id="inner">
+
+    </div>
+</div>
+<div id="input">
+<input type="text" placeholder="search" id="search"/>
+</div>
+
+
+
+</body>
+</html>
+

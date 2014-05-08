@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>3d transformation - Rotate3D</title>
+    <style>
+
+        .container{
+            margin:12%;
+            width:850px;
+        }
+        .threed {
+            width: 250px;
+            text-align:center;
+            outline: 4px dashed silver;
+            -moz-transform: rotateX(15deg) rotateY(45deg);
+            -ms-transform: rotateX(15deg) rotateY(45deg);
+            -webkit-transform: rotateX(15deg) rotateY(45deg);
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            float:left;
+        }
+        .threed div{
+            background-color: white;
+            border: 10px solid black;
+            padding: 10px;
+            text-align: center;
+            -moz-transition: -moz-transform 2s;
+            -ms-transition: -ms-transform 2s;
+            -webkit-transition: -webkit-transform 2s;
+
+        }
+        .trans-x{
+            -webkit-transform: rotate3d(1,1,0,-45deg);
+            -ms-transform: rotate3d(1,1,0,-45deg);
+            -moz-transform: rotate3d(1,1,0,-45deg);
+        }
+
+        .trans-y{
+            -webkit-transform: rotate3d(1,0,1,-22.5deg);
+            -ms-transform: rotate3d(1,0,1,-22.5deg);
+            -moz-transform: rotate3d(1,0,1,-22.5deg);
+        }
+
+        .trans-z{
+            -webkit-transform: rotate3d(0,10,10,15deg);
+            -ms-transform: rotate3d(0,10,10,15deg);
+            -moz-transform: rotate3d(0,10,10,15deg);
+        }
+
+        .threed:hover div {
+            -moz-transform: rotate3d(360,0,0,0deg);
+            -ms-transform: rotate3d(0,0,0,0deg);
+            -webkit-transform: rotate3d(0,0,0,70deg);
+        }
+    </style>
+</head>
+<body>
+<div class='container'>
+    <div class='threed'>
+        <div class='trans-x'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+    <div class='threed'>
+        <div class='trans-y'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+    <div class='threed'>
+        <div class='trans-z'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+</div>
+</body>

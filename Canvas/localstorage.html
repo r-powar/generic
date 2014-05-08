@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input{
+            font: 100 1em Avenir;
+            padding: 0.2em 0.5em;
+            margin: 1em;
+            border: 1px solid gray;
+
+        }
+    </style>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/modernizr/modernizr.js">
+
+    <script>
+        $(function(){
+            $('#btn').click(function(){
+              localStorage.setItem('name', $('name').val());
+              localStorage.setItem('email', $('email').val());
+
+            });
+
+            $('#btn2').click(function(){
+
+                console.log('btn2');
+
+                localStorage.getItem('name');
+                localStorage.getItem('email');
+
+                alert('Name is: ' + localStorage.getItem('name') + 'Email is: '+ localStorage.getItem('email') );
+            });
+        });
+        //check to see if local storage is available
+        //window.localStorage
+        if(Modernizr.localstorage){
+
+            console.log(localStorage.getItem('name'));
+//          localStorage.setItem('name', 'Raj');
+
+
+
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="name" placeholder="Name"/>
+<input type="text" id="email" placeholder="Email"/>
+<button id="btn">Store Data</button>
+<button id="btn2">Show Stored Data</button>
+
+</body>
+</html>

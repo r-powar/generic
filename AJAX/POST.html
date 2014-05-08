@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>POST</title>
+    <script>
+        window.onload = function(){
+
+            var json_obj = {
+                id:22,
+                name: 'Raj'
+            };
+
+            var str_json = JSON.stringify(json_obj);
+            //Making a POST request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://uitr.herokuapp.com/customer/add');
+            xhr.onreadystatechange = function(){
+              if(xhr.readyState === 4){
+                  if( xhr.status === 200){
+                      console.log(xhr.responseText);
+                  }
+                  else{
+                      console.log(xhr);
+                  }
+
+              }
+            };
+
+            xhr.send();
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

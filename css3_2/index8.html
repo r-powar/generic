@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transitions</title>
+    <style>
+        .abc{
+            background-color: black;
+            -webkit-transition: background-color 2s;
+            -moz-transition: background-color 2s;
+            -ms-transition: background-color 2s;
+
+        }
+
+        .abc:hover{
+            background-color: silver;
+            -webkit-transition-delay: -2s;
+        }
+
+        h1:hover{
+            font-size: 600%;
+        }
+        h1{
+            font-size: 150%;
+            transition-property: font-size;
+            transition-duration: 10s;
+            transition-timing-function: ease-out;
+            transition-delay: 15s;
+        }
+    </style>
+</head>
+<body>
+<div class="abc">
+    This div depicts simple transition
+</div>
+
+<h1>Transition Explained</h1>
+</body>
+</html>

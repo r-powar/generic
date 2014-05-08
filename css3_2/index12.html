@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>3d translate</title>
+    <style>
+
+        .container{
+            margin:12%;
+            width:850px;
+        }
+        .threed {
+            width: 250px;
+            text-align:center;
+            outline: 4px dashed silver;
+            -moz-transform: rotateX(15deg) rotateY(45deg);
+            -ms-transform: rotateX(15deg) rotateY(45deg);
+            -webkit-transform: rotateX(15deg) rotateY(45deg);
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            float:left;
+        }
+        .threed div{
+            background-color: white;
+            border: 10px solid black;
+            padding: 10px;
+            text-align: center;
+            -moz-transition: -moz-transform 2s;
+            -ms-transition: -ms-transform 2s;
+            -webkit-transition: -webkit-transform 2s;
+
+        }
+        .trans-xy {
+            -moz-transform: translateX(10px) translateY(10px);
+            -ms-transform: translateX(10px) translateY(10px);
+            -webkit-transform: translateX(10px) translateY(10px);
+        }
+        .trans-z {
+            -moz-transform: translateZ(40px);
+            -ms-transform: translateZ(40px);
+            -webkit-transform: translateZ(40px);
+        }
+        .trans-xyz {
+            -moz-transform: translate3d(10px,0,-20px);
+            -ms-transform: translate3d(10px,0,-20px);
+            -webkit-transform: translate3d(10px,0,-20px);
+        }
+        .threed:hover .trans-xy {
+            -moz-transform: translateX(0) translateY(0);
+            -ms-transform: translateX(0) translateY(0);
+            -webkit-transform: translateX(0) translateY(0);
+        }
+        .threed:hover .trans-z {
+            -moz-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+        }
+        .threed:hover .trans-xyz {
+            -moz-transform: translate3d(0,0,20px);
+            -ms-transform: translate3d(0,0,20px);
+            -webkit-transform: translate3d(0,0,20px);
+        }
+
+    </style>
+</head>
+<body>
+<div class='container'>
+    <div class='threed'>
+        <div class='trans-xy'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+    <div class='threed'>
+        <div class='trans-z'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+    <div class='threed'>
+        <div class='trans-xyz'>
+            <h2>Golive Labs</h2>
+            <h1>CSS3</h1>
+        </div>
+    </div>
+</div>
+</body>

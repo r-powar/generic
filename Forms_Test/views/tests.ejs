@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>AJAX Call</title>
+    <style>
+
+        /*@import url(http://reset5.googlecode.com/hg/reset.min.css);*/
+
+        /*@import*/
+        /*url(http://fonts.googleapis.com/css?family=Syncopate:400,700|Open+Sans:400,300,600,700);*/
+
+        body{
+            margin-top: -16px;
+            margin-left: 3px;
+            position: relative;
+
+        }
+        #menu{
+            height: 50px;
+            background-color: #272727;
+            margin-bottom: .85em;
+            margin-left: -.85em;
+            margin-right: -0.50em;
+
+        }
+
+        span.home{
+            display: block;
+            float:left;
+            padding: 0.85em 0.55em 0.15em 1em;
+            color: #FFF;
+            font-size: 25px;
+
+        }
+
+        .nav_bar{
+            float: right;
+            color: #FFFFFF;
+            display: inline-block;
+            padding: 0.85em 0.55em 0.99em 1em;
+            border-left: 1px solid grey ;
+
+        }
+
+        .content{
+            text-align: center;
+            padding-top: 50px;
+            padding-bottom: 500px;
+        }
+
+        .heading{
+            font-size: 48px;
+            font-family:'Open Sans';
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        #footer
+        {
+            float:left;
+            width: 101%;
+            display: block;
+            bottom: 0;
+            background-color: #272727;
+            margin-top: 500px;
+        }
+
+        div.copyright
+        {
+            text-align: center;
+            padding: 1em;
+            text-shadow:1px 1px 1px white;
+            color: #FFFFFF;
+        }
+
+        #content1{
+            display: inline-block;
+            max-width: 25em;
+            border: 1px solid grey;
+            padding: 2em 0 1.25em 0;
+
+        }
+
+        #content2{
+
+            display: inline-block;
+            max-width: 25em;
+            border: 1px solid grey;
+            padding: 2em 0 1.25em 0;
+
+        }
+
+        #content3{
+
+            display: inline-block;
+            max-width: 25em;
+            border: 1px solid grey;
+            padding: 2em 0 1.25em 0;
+
+        }
+
+
+    </style>
+    <script>
+        window.onload = function(){
+
+//            var header = document.getElementById('menu');
+//            var btn = document.getElementById('submit');
+//            btn.onclick = function(){
+//
+//                var form = document.forms.person;
+//                var json_data = {
+//                    // hard coded
+//                    name: form.name.value,
+//                    email: form.email.value,
+//                    city: form.city.value
+//                };
+//
+//                var xhr = new XMLHttpRequest();
+//                xhr.open('POST', '/person_submitted');
+//                xhr.setRequestHeader('Content-Type', 'application/json');
+//                xhr.setRequestHeader('Accept-Content', 'application/json');
+//                xhr.onreadystatechange = function(){
+//                    if (xhr.readyState === 4) {
+//
+//                        if (xhr.status !== 200) {
+//                            alert('There was an error: ' + xhr.statusText);
+//                        } else {
+//                            var obj = JSON.parse(xhr.responseText);
+//                            console.log(obj);
+//                            form.style.display = 'none';
+//                        }
+//                    }
+//                };
+//                xhr.send(JSON.stringify(json_data));
+//
+//            };
+
+//            var signup_btn = document.getElementById('sign_up');
+//            signup_btn.onclick = function(){
+//              var xhr = new XMLHttpRequest();
+//                xhr.open('GET','/signup');
+//                xhr.onreadystatechange = function(){
+//                    if(xhr.readyState === 4){
+//                        if(xhr.status !== 200){
+//                            alert('There was an error' + xhr.statusText);
+//                        }
+//                        else{
+//                            console.log('reached the sign up page succesfully');
+//                        }
+//
+//                    }
+//                };
+//
+//                xhr.send();
+//            };
+//
+//            var listtest_btn = document.getElementById('list_test');
+//            listtest_btn.onclick = function(){
+//                var xhr = new XMLHttpRequest();
+//                xhr.open('GET','/list');
+//                xhr.onreadystatechange = function(){
+//                    if(xhr.readyState === 4){
+//                        if(xhr.status !== 200){
+//                            alert('There was an error' + xhr.statusText);
+//                        }
+//                        else{
+//                            console.log('reached the sign up page succesfully');
+//                        }
+//
+//                    }
+//                };
+//
+//                xhr.send();
+//            };
+//
+//            var uploadtest_btn = document.getElementById('upload_test');
+//            uploadtest_btn.onclick = function(){
+//                var xhr = new XMLHttpRequest();
+//                xhr.open('GET','/uploadtest');
+//                xhr.onreadystatechange = function(){
+//                    if(xhr.readyState === 4){
+//                        if(xhr.status !== 200){
+//                            alert('There was an error' + xhr.statusText);
+//                        }
+//                        else{
+//                            console.log('reached the sign up page succesfully');
+//                        }
+//
+//                    }
+//                };
+//
+//                xhr.send();
+//            };
+
+
+
+
+
+        };
+    </script>
+</head>
+<body>
+<div id="menu">
+    <span class="home">HOME</span>
+    <ul>
+        <li class="nav_bar">
+            <a href="/signup" id="sign_up">Sign Up</a>
+        </li>
+        <li class="nav_bar">Take Test</li>
+        <li class="nav_bar">
+         <a href="/uploadtest" id="upload_test">Upload Test</a>
+        </li>
+        <li class="nav_bar">
+         <a href="/tests/list" id="list_test">List Test</a>
+        </li>
+
+    </ul>
+</div>
+
+<div class="heading">UI Training</div>
+<div class="content">
+
+   <div id="content1">List Tests
+      <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+       the industry's standard dummy text ever since...</p>
+   </div>
+   <div id="content2">Take Test
+       <p>
+           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+           the industry's standard dummy text ever since...
+       </p>
+   </div>
+   <div id="content3">Upload Test
+        <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+            the industry's standard dummy text ever since...
+        </p>
+   </div>
+
+</div>
+
+<footer id="footer">
+    <div class="copyright">&copy;GO LIVE LABS. 2103</div>
+</footer>
+
+</body>
+</html>
