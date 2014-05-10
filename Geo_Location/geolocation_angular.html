@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="weatherApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="bower_components/angular/angular.js">
+    </script>
+
+    <script>
+        //Create a module to bootstrap angular application
+        //.module() method of angular has parms - name of module and dependencies of module
+        var weatherApp = angular.module('weatherApp',[]);
+
+        weatherApp.controller('WeatherCtrl', function($scope, $http){
+            $scope.message = 'test';
+            navigator.geolocation.getCurrentPosition(function(position){
+                $scope.position = position;
+                console.log(position);
+                //passs in the url
+                $http.get('http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139').success(function(data){
+                    console.log(data);
+                    $scope.weather = data.weather;
+                });
+            }, function(){});
+
+        });
+    </script>
+</head>
+<body>
+<div ng-controller="WeatherCtrl">
+    <span>{{message}}</span>
+    <span style="display: block">
+        {{weather[0].description}}
+    </span>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html ng-app="geoApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #panel {
+            margin: 5em auto;
+            width: 50%;
+            border: 1px solid gray;
+        }
+
+        div.row{
+
+            padding: 0.5em;
+            /*border: 1px solid gray;*/
+            font: 100 1em Avenir ;
+            text-align: center;
+        }
+
+        input{
+            border: none;
+            font: 100 1em Avenir;
+            color: #555;
+            padding: .35em .75em;
+            background-color: #e6e6e6;
+        }
+
+        span.button{
+            border: 1px solid gray;
+            color: #444;
+            font: bold 0.85em Avenir;
+            background-color: #efefef;
+            cursor: pointer;
+            text-shadow: 1px 1px 1px #ffffff;
+            display: inline-block;
+            padding: 0.35em 0.75em;
+
+
+        }
+
+        span.button:hover{
+            background-color: #444;
+            color: #efefef;
+            transition: all 500ms;
+            -webkit-transition:all 500ms;
+            -moz-transition:all 500ms;
+            -o-transition:all 500ms;
+            -ms-transition:all 500ms;
+            text-shadow: 1px 1px 1px #333;
+
+        }
+
+
+    </style>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script>
+        var geo_app = angular.module('geoApp', []);
+        geo_app.controller('GeoCtrl', function($scope) {
+            $scope.message = 'testing';
+
+            $scope.getAddress = function() {
+                var geocoder = new google.maps.Geocoder();
+                var position = navigator.geolocation.getCurrentPosition(function (position) {
+
+                    //console.log(position);
+
+                    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+                    geocoder.geocode({
+                        'latLng': latlng
+                    }, function (results, status) {
+
+                        //console.log(results);
+                        //console.log(status);
+
+                        var addresscomp = results[0];
+                        var comps = addresscomp.address_components;
+                        var addr_type = ['postal_code','route','administrative_area_level_1','locality','street_number'];
+
+                        comps.forEach(function(comp){
+                            console.log(comp);
+                            addr_type.forEach(function(type){
+                                if(comp.types.indexOf(type) !== -1){
+                                    //console.log(comp['long_name']);
+                                    //document.forms[0][type].value = comp['long_name'];
+
+                                    $scope[type]= comp['long_name'];
+                                }
+                            });
+
+                        });
+
+                        console.log($scope);
+
+                    });
+                }, function () {
+                });
+            };
+        });
+
+
+
+    </script>
+</head>
+<body>
+<div id="panel" ng-controller="GeoCtrl">
+
+    <div class="row">
+        Address
+    </div>
+
+    <form>
+        <div class="row">
+            <input type="text" ng-model="street_number" />
+        </div>
+        <div class="row">
+            <input type="text" ng-model="route"/>
+        </div>
+        <div class="row">
+            <input type="text" ng-model="administrative_area_level_1"/>
+        </div>
+        <div class="row">
+            <input type="text" ng-model="postal_code"/>
+        </div>
+        <div class="row">
+            <input type="text" ng-model="locality"/>
+        </div>
+    </form>
+
+    <div class="row">
+    <span class="button" ng-click="getAddress()">
+        Confirm
+    </span>
+    </div>
+
+
+</div>
+</body>
+</html>

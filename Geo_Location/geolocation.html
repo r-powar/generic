@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        if(navigator && navigator.geolocation){
+            console.log('Geolocation is :' + navigator.userAgent);
+
+            // geolocation getCurrentPosition takes in two functions and the second function is used for error handling
+            navigator.geolocation.getCurrentPosition(function(position){
+                console.log(position);
+                var date = new Date(position.timestamp/1000);
+                console.log(date.toString());
+                console.log(position.coords.latitude);
+                console.log(position.coords.longitude);
+
+            }, function(){});
+
+            var geolocation_id = navigator.geolocation.watchPosition(function(position){
+                console.log(position);
+                var date = new Date(position.timestamp);
+                console.log(date.toString());
+                console.log(position.coords.latitude);
+                console.log(position.coords.longitude);
+            });
+
+            setTimeout(function(){
+               console.log('switched off');
+                navigator.geolocation.clearWatch(geolocation_id);
+            }, 10000);
+        }
+
+        function ajax_call(){
+
+        }
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
