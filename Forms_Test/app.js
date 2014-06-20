@@ -118,6 +118,14 @@ app.get('/uploadtest', function(req,res){
     res.render('uploadtest');
 });
 
+app.post('/submitted',function(req,res){
+    console.log(req.body);
+
+    res.json(200,{
+        message: 'successfully added' + req.body
+    });
+});
+
 
 
 

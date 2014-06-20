@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+   <html ng-app="state_app">
+    <head>
+        <title>
+        </title>
+        <script src='/bower_components/angular/angular.js'></script>
+        <script src="/js/index.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <link rel="stylesheet" href="/css/base.css"/>
+
+    </head>
+<body ng-controller="state_cntrl">
+<div id="modal" ng-show = 'info' ng-click="clickmodal($event)">
+    <div class="modalInfo" ng-click="clickmodaldata($event)">
+        {{info}}
+    </div>
+</div>
+<div>
+<div ng-repeat="state in message" class ='state' ng-click="getStateInfo(state)">
+      <span>
+          {{state.name}}
+      </span>
+      <span>
+          {{state.abbreviation}}
+      </span>
+
+</div>
+
+</div>
+
+</body>
+ </html>

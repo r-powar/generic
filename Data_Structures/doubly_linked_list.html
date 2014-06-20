@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function Node(element){
+            this.element = element;
+            this.next = null;
+            this.previous = null;
+
+        }
+        function LList(){
+            this.head = new Node('head');
+            this.find = find;
+            this.remove = remove;
+            this.insert = insert;
+            this.display = display;
+            this.findPrevious = findPrevious;
+            this.findLast = findLast;
+            this.disreverse = disreverse;
+        }
+
+        function insert(new_element,item){
+            var newNode = new Node(new_element);
+            var current = this.find(item);
+            newNode.next = current.next;
+            newNode.previous = current;
+            current.next = newNode;
+
+        }
+
+        function remove(item){
+            var currnode = this.find(item);
+            if(currnode.next != null){
+                currnode.previous.next = currnode.next;
+                currnode.next.previous = currnode.previous;
+                currnode.next = null;
+                currnode.previous = null;
+            }
+        }
+
+        function findLast(){
+            var currnode = this.head;
+            while(currnode.next != null){
+                currnode = currnode.next;
+            }
+
+            return currnode;
+        }
+
+        function disreverse(){
+            var currnode = this.head;
+            currnode = this.findLast();
+            while(currnode.previous != null){
+                console.log(currnode.element);
+                currnode = currnode.previous;
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

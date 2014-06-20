@@ -1,20 +1,55 @@
-<html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Test Page</title>
+    <script>
+    window.onload = function() {
+
+
+        var btn = document.getElementById('submit');
+        btn.onclick = function () {
+            var questions = document.getElementById('questions');
+            var data = {
+                questions: questions
+            };
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/submitted');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.setRequestHeader('Accept-Content', 'application/json');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status !== 200) {
+                        alert('There was an error ' + xhr.statusText);
+                    } else {
+                        var obj = JSON.parse(xhr.responseText);
+                        console.log(obj);
+                    }
+                }
+            }
+            xhr.send(JSON.stringify(data));
+        };
+    };
+
+    </script>
 </head>
 <body>
-<h1></h1>
+
 <p>
+    <% var counter = 0 %>
 <% testdata.forEach(function(element) { %>
-    <p> <%= element.question %> </p>
-<ul>
-    <% element.options.forEach(function(option){ %>
-    <li><%= option %></li>
-    <% }) %>
-</ul>
+    <p id="questions"> <%= element.question %> </p>
+
+    <ul id="list">
+        <% element.options.forEach(function(option){ %>
+        <input type="radio" name="same + <%= counter %>"> <%= option %> </input>
+        <% }) %>
+    </ul>
+
+    <% counter++ %>
 
     <% }) %>
-
 </p>
+
+<button id="submit">Submit</button>
 </body>
 </html>

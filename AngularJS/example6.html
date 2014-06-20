@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="directive">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Getting weather</title>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="data.js"></script>
+    <script>
+        var directive = angular.module('directive',[]);
+
+        directive.controller('directive_cntrl', function($scope,$http){
+
+            $scope.city_name = ' ';
+            $scope.getWeather = function($event){
+                if($event.keyCode === 13){
+                    console.log($scope.city_name);
+                    $http.get('http://api.openweathermap.org/data/2.5/weather?q='+ encodeURIComponent($scope.city_name) +',us').success(function(data){
+                        console.log(data);
+
+                        $scope.weather = data;
+
+                    });
+                }
+            }
+
+        });
+    </script>
+</head>
+<body>
+<div ng-controller="directive_cntrl">
+    <input type="text" ng-model="city_name" ng-keydown="getWeather($event)"/>
+    <div>{{weather.weather[0].description}}</div>
+    <img ng-src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" alt=""/>
+</div>
+</body>
+</html>

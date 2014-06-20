@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+        function Person(){
+            if(Person.instance){
+                return Person.instance;
+            }
+
+            Person.instance = this;
+            return this;
+        }
+
+        var p1 = new Person();
+        var p2 = new Person();
+
+        console.log(p1 === p2)
+
+        function Volvo(){
+            this.name = 'Vovlo Car';
+        }
+
+        function Audi(){
+            this.name = 'Audi Car';
+        }
+
+        var car1 = new Volvo();
+        var car2 = new Audi();
+
+        //var car = new Car('Audi');
+        //var car = Car.create('Audi');
+
+        //You do not use a new keyword on the Factory function
+        //We use
+        var Factory;
+        Factory.create = function(name){
+
+            Factory.volvo = function(){
+                this.name = 'volvo';
+            };
+
+            Factory.audi = function(car){
+                this.name = 'audi';
+            };
+
+            var car = new Factory[name]();
+
+            return car;
+        }
+
+        var audicar = new Factory('audi');
+        console.log(audicar);
+
+        Factory.create("audi");
+        console.log(new Factory('audi'));
+        console.log(new Factory('volvo'));
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

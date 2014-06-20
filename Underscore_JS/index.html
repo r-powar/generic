@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="data.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script>
+        window.onload = function(){
+          //console.log(data[0]);
+           //underscore js is library
+
+            _.each(data,function(element){
+               // console.log(element.name);
+            });
+
+            //map
+            var arr_names = _.map(data,function(element){
+                //console.log(element.name);
+                return element.name;
+            });
+
+            //console.log(arr_names);
+
+            //'pluck' picks up the property from the array
+            var arr = _.pluck(data,'name');
+            //console.log(arr);
+
+            //return the length
+            var arr_max_length = _.max(data,function(element){
+                return element.name.length;
+            });
+
+            console.log(arr_max_length);
+            console.log(arr_max_length.name);
+
+
+            var sanjose = {
+                lat:"37.3333",
+                 long: "121.9000"
+            };
+
+            var county_close_sanjose = _.min(data, function(element){
+                var position = {
+                    lat: Number(element.primary_latitude),
+                    lon: Number(element.primary_longitude)
+                }
+
+                return calcDistance(position,sanjose);
+            });
+
+            function calcDistance(x,y){
+                return Math.sqrt(
+                  Math.pow(x.lat - y.lat, 2) +
+                  Math.pow(x.lon - y.lon, 2)
+                );
+            }
+            console.log(county_close_sanjose);
+
+
+
+        };
+    </script>
+
+
+    <!--<script>-->
+
+        <!--function getMinTemp(cities, callback){-->
+            <!--var min_temp = Infinity;-->
+            <!--//code to get the minimum temperature-->
+            <!--//call back the function with the minimum temperatures-->
+            <!--callback(min_temp);-->
+        <!--}-->
+
+        <!--function getWeather(cityname,callback){-->
+            <!--var url = 'http://api.openweathermap.org/data/2.5/weather?q='+ encodeURIComponent(cityname) +',us';-->
+            <!--$.getJSON(url,function(data){-->
+               <!--// console.log(data);-->
+                <!--callback(data['main']['temp_min']);-->
+            <!--});-->
+
+        <!--}-->
+        <!--getWeather("San Francisco",console.log);-->
+
+    <!--</script>-->
+
+</head>
+<body>
+
+</body>
+</html>

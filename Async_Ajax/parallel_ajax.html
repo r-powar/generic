@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Parallel Ajax Calls</title>
+    <script>
+        var cities =['New York','San Jose','San Francisco','Fremont'];
+        var weather = [];
+        var counter = 0;
+       // console.log(false == undefined);//its an anamoly
+        get_weather_data(cities);
+        function get_weather_data(cities,callback){
+            cities.forEach(function(city){
+                ajax_call(city,callback);
+            })
+
+        }
+
+        function ajax_call(cities,callback){
+            var xhr = new XMLHttpRequest();
+            var url = 'http://api.openweathermap.org/data/2.5/weather?q='+cities+',us';
+            xhr.open('GET',url);
+
+            xhr.onreadystatechange= function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    weather.push(JSON.parse(xhr.responseText));
+                    counter++;
+                    if(counter == cities.length-1){
+                        callback(weather);
+                    }
+                }
+            }
+            xhr.send();
+
+        }
+
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

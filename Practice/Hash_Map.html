@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //take char codes and add them - higher collison chances
+        //take char codes and multiply them - higher collision chances
+        //take char codes and multiply with primes
+        //cumulative multiplication - a - 65 *13 = sum + b - 66 = sum * 13
+        //bitwise operations
+
+
+
+        //This is an example of culmulative multiplication
+
+
+        var prime_arr =[];
+
+        function prime_num(number){
+           var prime_val = true;
+            for(var i = 2; i <= Math.sqrt(number); i++){
+                if(number % i == 0)
+                {
+                    prime_val = false
+                }
+            }
+            return prime_val;
+        }
+
+        function prime_num_arr(number){
+
+            for(var i = 1; prime_arr.length < number; i++){
+                if(prime_num(i)){
+                    prime_arr.push(i);
+                }
+            }
+            console.log(prime_arr);
+        }
+
+        function hasString(str){
+            str = str.toUpperCase();
+            var hash = 0;
+            for(var i =0; i<str.length; i++){
+                //hash += str.charCodeAt(i);
+                hash  = hash + prime_arr[str.charCodeAt(i) - 65];
+
+            }
+            return hash;
+        }
+
+        function anagram_check(str1,str2){
+            prime_num_arr(26);
+            console.log(hasString(str1));
+            console.log(hasString(str2));
+            return hasString(str1) == hasString(str2);
+
+        }
+
+        var str1 = 'der';
+        var str2 = 'red';
+
+        var answer = anagram_check(str1,str2);
+        console.log(answer);
+
+
+
+
+       // console.log(hasString('paypal'));
+       //console.log(hasString('lapyap'));
+//        var arr  = ['paypal','apypal'];
+//        arr.forEach(function(ele){
+//            console.log(hasString(ele));
+//        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

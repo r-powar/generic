@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script>
+        $(function (){
+            var results = $('#results');
+
+            $('#search').keydown(function(e){
+
+                if (e.keyCode === 13) {
+                    $.getJSON('/imageinfo?search=' + e.target.value, function(data){
+                        data.forEach(function (url){
+                            $('<img>').attr('src', url).appendTo(results);
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+
+    </script>
+    <style>
+
+        #parent_scroll{
+            width: 800px;
+            height: 350px;
+            border: 1px solid grey;
+            margin-left: auto;
+            margin-right: auto;
+            /*overflow: hidden;*/
+            /*position: relative;*/
+        }
+
+        #slider{
+
+            width: 2430px;
+            border: 1px solid green;
+            height: 350px;
+            position: relative;
+
+        }
+
+        .slides{
+
+            width: 800px;
+            height: 350px;
+            border: 1px dotted blue;
+            float: left;
+            background-color: grey;
+            font-size: 30px;
+            text-align: center;
+            /*position: absolute;*/
+        }
+
+    </style>
+</head>
+<body>
+<div id="results">
+</div>
+<input type="text" id="search"/>
+
+<div id="parent_scroll">
+<div id="slider">
+    <div class="slides">Slide1</div>
+    <div class="slides">Slide2</div>
+    <div class="slides">Slide3</div>
+</div>
+</div>
+
+</body>
+</html>

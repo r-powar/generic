@@ -1,0 +1,27 @@
+{
+  "name": "promise-js",
+  "version": "0.0.5",
+  "main": "promise.js",
+  "ignore": [
+    "build",
+    "src",
+    "test",
+    "bower.json",
+    "Gruntfile.js",
+    ".gitignore",
+    ".travis.yml",
+    "LICENSE",
+    "package.json"
+  ],
+  "homepage": "https://github.com/kevincennis/promise",
+  "_release": "0.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.5",
+    "commit": "523a5d8c59998f9ebd604933c18a37de51c8b2a2"
+  },
+  "_source": "git://github.com/kevincennis/promise.git",
+  "_target": "~0.0.5",
+  "_originalSource": "promisejs",
+  "_direct": true
+}

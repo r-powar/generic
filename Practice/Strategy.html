@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //Strategy Pattern to select algorithims at run time
+        var validator = {};
+        //validate method - takes an object and check it
+
+        //configuration object
+        //base object with the strategies
+        //base object that applies the strategies by using the config object
+
+        var data_to_validated = {
+            first_name: 'Super',
+            age: '34'
+
+        }
+
+        var config = {
+            first_name:"isAlphanum",
+            age:"isnum"
+        }
+
+        validator.strategies = {
+            isAlphanum : function(str){
+                return /^[a-zA-Z0-9]*$/i.test(str);
+            },
+
+            isnum: function(str){
+                //return /^[0-9]$/.test(str);
+                return !    isNaN(str);
+            }
+
+        }
+
+        validator.validate = function(config,data_to_validated){
+            //loop over all the properties of the data object
+            //check the config object for the corresponding object
+                //if there is a corresponding strategy, test it
+            //if it returns false, print to console that property is not valid
+
+            for (var prop in data_to_validated){
+                if(prop in config){
+                    var strategy = config[prop];
+                    console.log(strategy);
+                    var valid = validator.strategies[strategy](data_to_validated[prop]);
+                    if(!valid){
+                        console.log('The property: ' + prop + 'with the value' + data_to_validated[prop] + 'is not valid');
+                    }
+
+                }
+            }
+        };
+
+        validator.validate(config,data_to_validated);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

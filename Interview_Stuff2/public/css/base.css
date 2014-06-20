@@ -1,0 +1,39 @@
+
+div.state {
+    display: inline-block;
+    padding: 0.25em 0.75em;
+    margin: 0.25em;
+    background-color: #eee;
+    text-shadow: 1px 1px 1px #ffffff;
+}
+div.state:hover{
+    display: inline-block;
+    padding: 0.25em 0.75em;
+    margin: 0.25em;
+    background-color: #ddd;
+    text-shadow: 1px 1px 1px #ffffff;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+}
+
+div#modal{
+    background-color: rgba(100,100,100,0.8);
+    position: fixed;
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+div.modalInfo{
+    background-color: white;
+    width: 60%;
+    padding: 1em;
+    overflow: scroll;
+
+}

@@ -1,0 +1,6 @@
+<input type="text" ng-model="company_search"/>
+<div ng-repeat="company in companies | filter:company_search">
+    <a href="http://localhost:63342/AngularJS/stock_quote_angular.html#/companies/{{company.symbol}}">{{company.name}}</a>
+    <span>{{company.symbol}}</span>
+
+</div>

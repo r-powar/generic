@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+
+
+    <script>
+        window.onload = function() {
+            var data = {
+                catagories: ["home", "about", "pics"],
+                type: "FUN",
+                deets: {
+                    num_cat: 3,
+                    num_pages: 8
+                }
+            };
+
+            function foo(data, err) {
+                var element = document.getElementById('square');
+                var catogeries = data.catagories;
+                var type = data.type;
+                var deets = data.deets.num_pages;
+
+                console.log(catogeries);
+                console.log(type);
+                console.log(deets);
+
+                var cata="";
+
+//                catogeries.forEach(function (e) {
+//                  cata = e;
+//                  console.log(cata);
+//                  element.innerHTML = "*" + cata;
+//
+//                });
+
+                for(var i = 0; i < catogeries.length; i++){
+                    cata += "*" + catogeries[i] + "</br>";
+                }
+
+                element.innerHTML = cata + "</br>" + "TYPE: " + type + " number of pages: " + deets;
+
+            }
+
+            foo(data);
+        };
+    </script>
+
+</head>
+<body>
+   <div id="square"></div>
+</body>
+</html>

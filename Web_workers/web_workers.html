@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+
+//            if (window.Worker){
+//                var workers = new Worker('primes.js');
+//                workers.onmessage = function(e){
+//                    console.log(e);
+//                    console.log('the message event is fired ' + e.data ); //
+//                }
+//
+//                console.log('Calling...')
+//                workers.postMessage(100);
+//            }
+
+              if(window.Worker){
+                  var workers = new Worker('primes.js');
+
+                  workers.onmessage = function printtopage(n) {
+                     var span = document.createElement('span');
+                      span.innerHTML = n;
+                      var div= document.getElementById('div');
+                      div.appendChild(span);
+                  }
+
+                  workers.postMessage(1000);
+              }
+
+
+        }
+    </script>
+</head>
+<body>
+<div>
+
+</div>
+</body>
+</html>

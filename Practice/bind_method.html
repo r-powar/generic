@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Practice</title>
+    <script>
+
+        //bind method is where an object is passed to a function, and on invocation the origianl function
+        // becomes the method of the object
+        var sum = function(y,z){
+            return this.x + y + z;
+        }
+        var binding = sum.bind({x:1},2); // this method returns a new function
+
+        var value = binding(3);
+        console.log(value);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

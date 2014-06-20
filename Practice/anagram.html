@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function checking_anagram(str1, str2){
+            var str1_sort = str1.split('').sort();
+            var str2_sort = str2.split('').sort();
+
+
+            if(str1_sort == str2_sort){
+                return true;
+            }
+        }
+
+        var str1 = 'paypal';
+        var str2 = 'apaply';
+        var value =checking_anagram(str1,str2);
+        console.log(value);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

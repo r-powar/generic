@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="yahoo_app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        span{
+            font-size: 25px;
+            padding: 1em;
+        }
+
+
+
+    </style>
+    <script src="data_company.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+
+    <script>
+        var stock = angular.module("yahoo_app",['ngRoute']);
+
+        stock.config(['$routeProvider', function(rp){
+            rp.when('/companies',{
+                        templateUrl:'view_comapnies.html',
+                        controller:'cntrl'
+                    }
+            ).when('/companies/:symbol',{
+                        templateUrl:'view_company_detail.html',
+                        controller: 'Stock_Ctrl'
+                    }).otherwise({
+                        redirectTo: '/companies'
+                    });
+        }]);
+
+        // We are creating a  "value recipe" for a service
+//        stock.value('url','http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%27GOOG%27)&format=json&diagnostics=true&env=http://datatables.org/alltables.env');
+
+        stock.factory('list',function(){
+            return data;
+        });
+
+        stock.controller('cntrl', function($scope,$http,list){
+
+            $scope.message = 'Gettting value.....';
+            $scope.companies = list;
+
+
+        });
+
+        stock.controller('Stock_Ctrl', function($scope,$http,$routeParams){
+           var url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%27'+$routeParams.symbol +'%27)&format=json&diagnostics=true&env=http://datatables.org/alltables.env';
+           console.log($routeParams.symbol);
+           $http.get(url).success(function(data){
+               $scope.data = JSON.stringify(data);
+           });
+        });
+    </script>
+</head>
+<body>
+
+<div ng-view>
+
+</div>
+
+</body>
+</html>

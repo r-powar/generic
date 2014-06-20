@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function Node(element){
+            this.element = element;
+            this.next = null;
+        }
+
+        function LList(){
+            this.head = new Node('head');
+            this.find = find;
+            this.remove = remove;
+            this.insert = insert;
+            this.display = display;
+            this.findPrevious = findPrevious;
+        }
+
+        function find(item){
+            var curr_node = this.head;
+            while(curr_node.element != item){
+                curr_node = curr_node.next;
+
+            }
+            return curr_node;
+        }
+
+        function insert(new_element,item){
+            var newNode = new Node(new_element);
+            var current = this.find(item);
+            newNode.next = current.next;
+            current.next = newNode;
+
+        }
+
+        function display(){
+              var curr_node = this.head;
+            while(!(curr_node.next == null)){
+                console.log(curr_node.next.element);
+                curr_node = curr_node.next;
+            }
+        }
+
+        function findPrevious(item){
+            var currnode = this.head;
+            while((currnode.next != null) &&(currnode.next.element != item)){
+                currnode = currnode.next;
+            }
+
+            return currnode;
+        }
+
+        function remove(item){
+            var prevnode = this.findPrevious(item);
+            if(prevnode.next != null){
+                prevnode.next = prevnode.next.next;
+            }
+        }
+
+        var cities = new LList();
+        cities.insert('123','head');
+        cities.insert('345','123');
+        cities.insert('567','345');
+        cities.display();
+        cities.remove('345');
+        console.log('-----');
+        cities.display();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

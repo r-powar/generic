@@ -34,9 +34,10 @@
 
         function createCounter() {
              var privateCounter = 0;
-             function changeBy(val) {
+
+        function changeBy(val) {
         privateCounter += val;
-    }
+       }
     return {
         increment: function() {
             changeBy(1);

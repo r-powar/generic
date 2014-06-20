@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+
+    <script>
+        window.onload = function(){
+
+            var date = document.getElementById('outer');
+            var time = new Date();
+            var  hour = time.getHours();
+            var minutes = time.getMinutes();
+            var seconds = time.getSeconds();
+
+            date.innerHTML = hour + ":" + minutes + ":" + seconds;
+
+        };
+
+    </script>
+
+
+</head>
+<body>
+<div id="outer">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bower_components/open-sans-fontface/open-sans.css"/>
+    <title></title>
+    <style>
+        .main{
+            width:300px;
+            height:300px;
+            border: 1px solid dimgrey;
+            background-color: grey;
+            overflow: hidden;
+
+
+        }
+        ul,li{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            width: 1000px;
+
+
+        }
+
+       ul > li{
+            width: 300px;
+            height: 300px;
+            color: red;
+            display: inline-block;
+            text-align: center;
+
+        }
+
+
+        .tabelcell{
+            height: 300px;
+            width: 30px;
+            border: 1px solid grey;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            float: left;
+           
+        }
+
+
+    </style>
+
+    <script>
+        window.onload = function() {
+            console.log('test1')
+            var scroll = document.getElementById(   'scroll1');
+
+            scroll.onclick = function () {
+                console.log('test2');
+            }
+        };
+
+    </script>
+</head>
+<body>
+  <div class="tabelcell">
+      <a href="" id="scroll1">&raquo</a>
+  </div>
+<div class="main">
+
+    <ul>
+        <li>Slide1</li>
+        <li>Slide2</li>
+        <li>Slide3</li>
+    </ul>
+</div>
+
+</body>
+</html>

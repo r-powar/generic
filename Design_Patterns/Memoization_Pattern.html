@@ -18,7 +18,7 @@
 
 
 
-        var cache ={};
+
 
         function factorial_cache(x){
             if(x in cache)
@@ -120,6 +120,9 @@
         var result2 = factorial_cache(6);
         console.log(factorial_cache(6));
         console.log(cache);
+
+        console.log(assert(factorial(4),4,3));
+
 
         // go to jsperf to check the code for memoized and unmemoized
 

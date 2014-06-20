@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function(){
+
+          var slider = 0;
+          var slides = 0;
+
+          var counter = 0;
+          var length = 0;
+
+          var curr_index = 0;
+          var tracker =0;
+
+          function slideIt(){
+              slider = document.getElementById('slider');
+              slides = document.getElementsByClassName('slides');
+
+              counter = slides[0].offsetWidth + 2;
+              console.log("counter: " + counter);
+              length = slides.length;
+
+              slider.style.width = counter * length;
+
+              tracker = setInterval(move, 3000);
+
+          }
+
+          function move(){
+
+              if(curr_index == length - 1){
+                  curr_index = 0;
+              }
+              else{
+                  curr_index += 1;
+              }
+              slider.style.left = - curr_index*counter + "px";
+
+          }
+
+          slideIt();
+
+        };
+    </script>
+    <style>
+
+        #parent_scroll{
+            width: 800px;
+            height: 350px;
+            border: 1px solid grey;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #slider{
+            width: 2430px;
+            border: 1px solid green;
+            height: 350px;
+            position: absolute;
+        }
+
+        .slides{
+            width: 800px;
+            height: 350px;
+            border: 1px dotted blue;
+            float: left;
+            background-color: grey;
+            font-size: 30px;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div id="parent_scroll">
+    <div id="slider">
+        <div class="slides">Slide1</div>
+        <div class="slides">Slide2</div>
+        <div class="slides">Slide3</div>
+    </div>
+</div>
+
+</body>
+</html>

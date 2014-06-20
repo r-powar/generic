@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="Directive_name">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Directive</title>
+    <style></style>
+    <script src="bower_components/angular/angular.js"></script>
+    <script>
+        var directive = angular.module('Directive_name',[]);
+
+        directive.controller('Directive_Cntrl', function($scope){
+
+            $scope.info  = {
+                name: 'Raj',
+                id: 22
+            };
+        }).directive('information',function(){
+            var obj_info = {
+                restrict: 'E',//element,attribute,class(EAC)
+                templateUrl: 'partial_template.html'
+
+            }
+
+            //return the object
+            return obj_info;
+        });
+
+    </script>
+</head>
+<body>
+<div ng-controller="Directive_Cntrl">
+    <information></information>
+</div>
+
+</body>
+</html>

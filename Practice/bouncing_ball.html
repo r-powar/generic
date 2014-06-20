@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #ball{
+            border: 1px solid;
+            border-radius: 50%;
+            background-color:red;
+            width: 15px;
+            height: 15px;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload= function(){
+          var ball = document.getElementById('ball');
+          var initial = 0;
+            var current = 0;
+            var bottom = 200;
+            var upward = false;
+
+         var intervalid = setInterval(function(){
+
+             if(initial > bottom){
+                 clearInterval(intervalid);
+             }
+
+             if(upward == true){
+                 current -= 4;
+                 ball.style.top = current + 'px';
+                 if(current <= initial){
+                     upward = false;
+                 }
+
+             }
+             else{
+                 current += 4;
+                 ball.style.top = current + 'px';
+                 if(current >= bottom){
+                     upward = true;
+                     initial += 30;
+                 }
+             }
+
+         }, 1000);
+
+
+        };
+    </script>
+
+</head>
+<body>
+    <div id="ball">
+
+    </div>
+</body>
+</html>

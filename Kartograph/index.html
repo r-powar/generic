@@ -3,9 +3,11 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+
     <script src="js/jquery.js"></script>
     <script src="js/rapahel.js"></script>
     <script src="js/kartograph.js"></script>
+
     <!--<script src="js/jquery.qtips.js"></script>-->
     <script src="data.js"></script>
     <script>
@@ -21,8 +23,7 @@
 
         window.onload = function(){
 
-            //$.fn.qtip.defaults.style.classes = 'ui-tooltip-bootstrap';
-            //$.fn.qtip.defaults.style.def = false;
+
 
            var map = $K.map('#map');
             map.loadMap('image/usa.svg', function() {
@@ -32,6 +33,9 @@
                         'stroke-width': '0.2pt',
                         'stroke-linejoin': 'round'
 
+                    },
+                    mouseenter: function(d, path) {
+                        path.attr('fill', Math.random() < 0.5 ? '#c04' : '#04c');
                     }
                 });
 
@@ -55,19 +59,7 @@
                 })
             }, {
                 zoom: 1.0
-            }).done(function(){
-
-                $('circle_bubble').hover(function(){
-                    var index = $(this).attr('data-hasqtip');
-                    var capital = data_arr[index].capital;
-                    var _id = 'q-tip' + index + '-content';
-                    var elem = document.getElementById(_id);
-
-                    if(elem){
-                        elem.children[1].innerHTML = 'Getting Weather Data...';
-
-                    }
-                });
+                //attrs: {fill:'red'}
             });
 
 

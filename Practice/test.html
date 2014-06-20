@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+//        function University(){
+//            //instance is publicly accessible
+////            if(University.instance){
+////                return University.instance;
+////            }
+////
+////            University.instance = this;
+////            console.log(this);
+////            return this;
+////
+//            //with application of closure property
+//            var instance = this;
+//
+//            University = function(){
+//                return instance;
+//            }
+//
+//        }
+//
+//        var uni1 = new University();
+//        var uni2 = new University();
+//
+//        console.log(uni1);
+//        console.log(uni2);
+//        console.log(uni1 == uni2);
+//
+//       var person = {
+//           name: "sadawsd",
+//           id : 'asfasd'
+//       }
+//
+//       var p1 = Object.create(person); //inheritance
+//       p1.name = 'raj';
+//       console.log(p1);
+//
+//       function access(){
+//           this.name = 'Raj';
+//       }
+//
+//       access.prototype.name= 'Raj P';
+//       var f1 = new access();
+//       console.log(f1.name);
+//       console.log((Object.getPrototypeOf(f1)));
+
+        var obj = {id:23};
+        var o1 = obj;
+        //console.log(o1);
+
+        function Hash_Table(){
+            this.table = new Array(140);
+            this.hashing = hashing;
+            this.input = input;
+            this.display = display;
+        }
+
+        function hashing(val){
+            var hash = 0;
+            for(var i = 0 ; i < val.length; i++){
+                hash += val.charCodeAt(i);
+
+            }
+            console.log(val + ": " + hash);
+            return hash % this.table.length;
+        }
+
+        function input(val){
+            var position = this.hashing(val);
+            this.table[position] = val;
+        }
+
+        function display(){
+            for (var i =0; i < this.table.length; i++){
+                if(this.table[i] != undefined){
+                    console.log(this.table[i]);
+                }
+            }
+        }
+
+        var arr = ['ccvv','sdas','wedx','ffcss'];
+        var h_table = new Hash_Table();
+
+        for(var i =0; i < arr.length; i++){
+            h_table.input(arr[i]);
+        }
+
+        h_table.display();
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

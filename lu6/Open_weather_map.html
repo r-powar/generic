@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Information</title>
+    <script src="data.js"></script>
+    <script>
+        window.onload = function(){
+
+           getCountyName();
+        };
+
+        function getCountyName(){
+
+
+            var element = document.createElement('select');
+            var break_element = document.createElement('br');
+
+            for(var i =0; i < county_info.length; i++ ){
+                document.body.appendChild(element);
+
+
+                var option_values = document.createElement('option');
+                element.appendChild(option_values);
+                option_values.text = county_info[i].name;
+                document.body.appendChild(break_element);
+
+            }
+
+           // document.body.appendChild(break_element);
+
+
+            element.onchange = function(evnt){
+
+                var index = evnt.currentTarget.selectedIndex;
+                var latitude = county_info[index].primary_latitude;
+                var longitude = county_info[index].primary_longitude;
+
+                //console.log("Latitude: " + latitude);
+                //console.log("Longitude: " + longitude);
+
+                getData(latitude,longitude);
+            }
+
+           function getData(latitude, longitude){
+
+                var xhr = new XMLHttpRequest();
+                var url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=" + latitude + "&lon=" + longitude + "&cnt=10&mode=json";
+                xhr.open("GET",url);
+                xhr.onreadystatechange = function (){
+                    if(xhr.readyState === 4 && xhr.status === 200){
+                        var obj = JSON.parse(xhr.responseText);
+                        console.log(obj);
+                        getWeatherInfo(obj);
+
+                    }
+                };
+
+               xhr.send();
+
+           }
+
+           function getWeatherInfo(obj){
+
+               var div_element = document.createElement('div');
+               document.body.appendChild(div_element);
+               for(var i = 0; i < 7; i++){
+                   var span_element = document.createElement('span');
+                   div_element.appendChild(span_element);
+                   div_element.children[i].innerHTML = obj.list[i].weather[0].description;
+                   var img_element = document.createElement('img');
+                   span_element.appendChild(img_element);
+                   img_element.setAttribute('src','http://openweathermap.org/img/w/' + obj.list[i].weather[0].icon + '.png');
+
+
+               }
+
+//               for(var j = 0; j < 7; j++){
+//                   var img_element = document.createElement('img');
+//                   div_element.appendChild(img_element);
+//                   //var imgurl = 'http://openweathermap.org/img/w/' + obj.list[j].weather[0].icon + '.png';
+//                   img_element.setAttribute('src','http://openweathermap.org/img/w/' + obj.list[j].weather[0].icon + '.png');
+//               }
+
+
+
+
+           }
+
+        }
+
+
+    </script>
+</head>
+<body>
+</body>
+</html>
